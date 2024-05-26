@@ -20,10 +20,8 @@ return new class extends Migration
             $table->foreign('id_jurusan')->references('id_jurusan')->on('majors')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('id_guru')->unsigned();
             $table->foreign('id_guru')->references('id_guru')->on('mentors')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_laporan')->unsigned();
-            $table->foreign('id_laporan')->references('id_laporan')->on('reports')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

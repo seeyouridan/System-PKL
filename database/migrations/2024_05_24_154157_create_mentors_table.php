@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->increments('id_guru');
-            $table->string('nip_guru', 30);
+            $table->string('nip_guru', 30)->nullable();
             $table->string('nama_guru', 50);
             $table->char('jenis_kelamin', 5);
-            $table->string('no_telp', 15);
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('no_telp', 15)->nullable();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-        });
+          });
     }
 
     /**

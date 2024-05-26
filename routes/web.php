@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::get('/dashboard', function () {
@@ -26,6 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'role:guru'])->group(function () {
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
+});
+
+Route::middleware('auth', 'role:siswa')->group(function () {
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 });
 
 require __DIR__.'/auth.php';

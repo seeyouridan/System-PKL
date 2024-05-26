@@ -15,6 +15,8 @@ return new class extends Migration
             $table->increments('id_pkl');
             $table->integer('id_siswa')->unsigned();
             $table->foreign('id_siswa')->references('id_siswa')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('id_instansi')->unsigned();
+            $table->foreign('id_instansi')->references('id_instansi')->on('instances')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -19,8 +19,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->integer('id_kota')->unsigned();
             $table->foreign('id_kota')->references('id_kota')->on('cities')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_pkl')->unsigned();
-            $table->foreign('id_pkl')->references('id_pkl')->on('pkls')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('no_telp', 15)->nullable();
             $table->timestamps();
         });
     }
