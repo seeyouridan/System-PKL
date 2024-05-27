@@ -22,6 +22,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Aria Cikondang No 8 RT/RW 003/007, Kel. Sawah Gede, Cianjur',
                     'id_kota' => '1',
                     'no_telp' => '085797306040',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -31,6 +33,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Gg. Margaluyu No.92 b, Sayang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43213',
                     'id_kota' => '1',
                     'no_telp' => '0815-6363-9156',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -40,6 +44,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Kawaluyaan Indah Raya No.4, Jatisari, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286',
                     'id_kota' => '1',
                     'no_telp' => '(022) 7319735',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -49,6 +55,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Ir. H. Juanda No.80, Mekarsari, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43211',
                     'id_kota' => '1',
                     'no_telp' => '0812-2394-0207',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -58,6 +66,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Raya Cibeber, Sukasari, Kec. Cilaku, Kabupaten Cianjur, Jawa Barat 43285',
                     'id_kota' => '1',
                     'no_telp' => '-',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -67,6 +77,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Bungursari VI No.7, Pasirlayung, Kec. Cibeunying Kidul, Kota Bandung, Jawa Barat 40192',
                     'id_kota' => '2',
                     'no_telp' => '-',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -76,6 +88,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl.Dipenogoro no 27, Citarum, Kec. Bandung Wetan, Kota Bandung',
                     'id_kota' => '2',
                     'no_telp' => '081284959767',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -85,6 +99,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Terrace Pelangi Arjasari Blok F8 Baros, Kec. Arjasari, Kabupaten Bandung, Jawa Barat',
                     'id_kota' => '2',
                     'no_telp' => '082295599849',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -94,6 +110,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Bukit Arcamanik Ruko 19 D RT/RW 003/009, Kec. Cimenyan, Kab. Bandung, Jawa Barat',
                     'id_kota' => '2',
                     'no_telp' => '085871040780',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -103,6 +121,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Sentra utama, No 30, Komolek Town Place Kota Cimahi, Jawa Barat',
                     'id_kota' => '2',
                     'no_telp' => '085794471347',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -112,6 +132,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Eboni, Cisaranten Kidul, Kec. Gedebage, Kota Bandung, Jawa Barat 40295',
                     'id_kota' => '2',
                     'no_telp' => '-',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -121,6 +143,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Doktor Muwardi, Gg. Perjuangan, Cianjur 1393668',
                     'id_kota' => '1',
                     'no_telp' => '-',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -130,6 +154,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Sawah Gede, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43212',
                     'id_kota' => '1',
                     'no_telp' => '-',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -139,6 +165,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Kurnia, Meubel Jl. Balandongan No.160, Sudajaya Hilir, Kec. Baros, Kota Sukabumi, Jawa Barat 43161',
                     'id_kota' => '3',
                     'no_telp' => '0857-2588-9448',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -148,6 +176,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Rukan Artha Gading Niaga, Jl. Boulevard Artha Gading, RT.18/RW.8, Klp. Gading Bar., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240',
                     'id_kota' => '4',
                     'no_telp' => '(021) 45850857',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -157,6 +187,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Raya Puncak No 396 RT/RW 005/006, Bogor',
                     'id_kota' => '4',
                     'no_telp' => '085881567970',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -166,6 +198,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Ariobimo Central 4th floor Jl. H.R.Rasuna Said Kav.X-2 No.5, RT.9/RW.4, Kuningan Tim., Kecamatan Setiabudi, Jakarta, Daerah Khusus Ibukota Jakarta 12950',
                     'id_kota' => '5',
                     'no_telp' => '(021) 52909160',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -175,6 +209,8 @@ class InstanceSeeder extends Seeder
                     'alamat' => 'Jl. Rawa Gelam II, Jatinegara, Kec. Pulo Gadung, Jakarta',
                     'id_kota' => '5',
                     'no_telp' => '082295599849',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
             ]
         );

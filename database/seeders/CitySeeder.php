@@ -18,26 +18,36 @@ class CitySeeder extends Seeder
                 [
                     'kota' => 'Cianjur',
                     'jml_instansi' => '27',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
                     'kota' => 'Bandung',
                     'jml_instansi' => '16',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
                     'kota' => 'Sukabumi',
                     'jml_instansi' => '3',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
                     'kota' => 'Bogor',
                     'jml_instansi' => '4',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
                     'kota' => 'Jakarta',
                     'jml_instansi' => '5',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
             ]
         );

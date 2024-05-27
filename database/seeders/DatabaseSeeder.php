@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             InstanceSeeder::class,
             MajorSeeder::class,
+            KajurSeeder::class,
             MentorSeeder::class,
             StudentSeeder::class,
         ]);

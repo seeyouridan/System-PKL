@@ -24,9 +24,9 @@ class MajorSeeder extends Seeder
                 ],
 
                 [
-                    'kode_jurusan' => 'DPIB001',
-                    'nama_jurusan' => 'DPIB 1',
-                    'jml_siswa' => 21,
+                    'kode_jurusan' => 'DPIB002',
+                    'nama_jurusan' => 'DPIB 2',
+                    'jml_siswa' => 26,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
