@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class GuruController extends Controller
 {
@@ -13,7 +13,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('guru.index');
+        $data['mentors'] = Mentor::with('mentor')->get();
+        return view('guru.index', $data);
     }
 
     /**
