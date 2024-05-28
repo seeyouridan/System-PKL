@@ -17,7 +17,7 @@
                             <x-input-label for="kode_instansi" value="Kode Instansi" />
                             <x-text-input id="kode_instansi" type="text" name="kode_instansi"
                                 class="mt-1 block w-full" value="{{ old('kode_instansi', $instansi->kode_instansi) }}"
-                                required />
+                                required autocomplete />
                             <x-input-error class="mt-2" :messages="$errors->get('kode_instansi')" />
                         </div>
 
@@ -25,27 +25,27 @@
                             <x-input-label for="nama_instansi" value="Nama Instansi" />
                             <x-text-input id="nama_instansi" type="text" name="nama_instansi"
                                 class="mt-1 block w-full" value="{{ old('nama_instansi', $instansi->nama_instansi) }}"
-                                required />
+                                required autocomplete />
                             <x-input-error class="mt-2" :messages="$errors->get('nama_instansi')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="kuota" value="Kuota Siswa/i" />
                             <x-text-input id="kuota" type="text" name="kuota" class="mt-1 block w-full"
-                                required value="{{ old('kuota', $instansi->kuota) }}" required />
+                                required value="{{ old('kuota', $instansi->kuota) }}" autocomplete />
                             <x-input-error class="mt-2" :messages="$errors->get('kuota')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="alamat" value="Alamat Instansi" />
                             <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full"
-                                required value="{{ old('alamat', $instansi->alamat) }}" />
+                            required autocomplete value="{{ old('alamat', $instansi->alamat) }}" />
                             <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="id_kota" value="Kota" />
-                            <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required>
+                            <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required autocomplete>
                                 <option value="">Pilih Kota</option>
                                 <option value="1"
                                     {{ old('kota', $instansi->kota) === 'Cianjur' ? 'selected' : '' }}>Cianjur
@@ -67,7 +67,7 @@
                         <div class="max-w-xl">
                             <x-input-label for="no_telp" value="Nomor Telepon" />
                             <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full"
-                                value="{{ old('no_telp', $instansi->no_telp) }}" />
+                                value="{{ old('no_telp', $instansi->no_telp) }}" autocomplete/>
                             <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
                         </div>
 

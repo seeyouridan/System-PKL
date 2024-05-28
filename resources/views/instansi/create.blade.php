@@ -13,32 +13,32 @@
                     <div class="max-w-xl">
                         <x-input-label for="kode_instansi" value="Kode Instansi" />
                         <x-text-input id="kode_instansi" type="text" name="kode_instansi" class="mt-1 block w-full"
-                            required />
+                            required autocomplete/>
                         <x-input-error class="mt-2" :messages="$errors->get('kode_instansi')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="nama_instansi" value="Nama Instansi" />
                         <x-text-input id="nama_instansi" type="text" name="nama_instansi"
-                            class="mt-1 block w-full" />
+                            class="mt-1 block w-full" required autocomplete/>
                         <x-input-error class="mt-2" :messages="$errors->get('nama_instansi')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="kuota" value="Kuota Siswa/i" />
-                        <x-text-input id="kuota" type="text" name="kuota" class="mt-1 block w-full" required />
+                        <x-text-input id="kuota" type="text" name="kuota" class="mt-1 block w-full" required autocomplete />
                         <x-input-error class="mt-2" :messages="$errors->get('kuota')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="alamat" value="Alamat Instansi" />
-                        <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full" />
+                        <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full" required autocomplete/>
                         <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="id_kota" value="Kota" />
-                        <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required>
+                        <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required autocomplete>
                             <option value="">Pilih Kota</option>
                             <option value="1" {{ old('kota') === 'Cianjur' ? 'selected' : '' }}>Cianjur</option>
                             <option value="2" {{ old('kota') === 'Bandung' ? 'selected' : '' }}>Bandung</option>
@@ -50,7 +50,7 @@
 
                     <div class="max-w-xl">
                         <x-input-label for="no_telp" value="Nomor Telepon" />
-                        <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full" />
+                        <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full" autocomplete/>
                         <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
                     </div>
 

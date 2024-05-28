@@ -12,25 +12,25 @@
 
                         <div class="max-w-xl">
                             <x-input-label for="username" value="Buat Username" />
-                            <x-text-input id="username" type="text" name="username" class="mt-1 block w-full" required/>
+                            <x-text-input id="username" type="text" name="username" class="mt-1 block w-full" required autocomplete/>
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="nip_guru" value="NIP / NUPTK" />
-                            <x-text-input id="nip_guru" type="text" name="nip_guru" class="mt-1 block w-full"/>
+                            <x-text-input id="nip_guru" type="text" name="nip_guru" class="mt-1 block w-full" autocomplete/>
                             <x-input-error class="mt-2" :messages="$errors->get('nip_guru')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="nama_guru" value="Nama Guru" />
-                            <x-text-input id="nama_guru" type="text" name="nama_guru" class="mt-1 block w-full" required />
+                            <x-text-input id="nama_guru" type="text" name="nama_guru" class="mt-1 block w-full" required autocomplete />
                             <x-input-error class="mt-2" :messages="$errors->get('nama_guru')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="jenis_kelamin" value="Jenis Kelamin" />
-                            <x-select-input id="jenis_kelamin" name="jenis_kelamin" class="mt-1 block w-full" required>
+                            <x-select-input id="jenis_kelamin" name="jenis_kelamin" class="mt-1 block w-full" required autocomplete>
                                 <option value="">Pilih Jenis Kelamin</option>
                                 <option value="P" {{ old('jenis_kelamin') === 'P' ? 'selected' : '' }}>Perempuan</option>
                                 <option value="L" {{ old('jenis_kelamin') === 'L' ? 'selected' : '' }}>Laki-Laki</option>
@@ -39,7 +39,7 @@
 
                         <div class="max-w-xl">
                             <x-input-label for="no_telp" value="Nomor Telepon" />
-                            <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full"/>
+                            <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full" autocomplete/>
                             <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
                         </div>
 
