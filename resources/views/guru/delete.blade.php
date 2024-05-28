@@ -5,12 +5,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="hapusModalLabel_{{ $data->id_guru }}">Edit
-                    Data</h1>
+                <h1 class="modal-title fs-5" id="hapusModalLabel_{{ $data->id_guru }}">Hapus Data Guru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                
                 <form method="post" action="{{ route('guru.destroy', $data->id_guru) }}"
                     enctype="multipart/form-data" class="mt-6 space-y-6">
                     @csrf
