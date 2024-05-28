@@ -38,7 +38,7 @@
 
                         <div class="max-w-xl">
                             <x-input-label for="alamat" value="Alamat Instansi" />
-                            <x-text-input id="alamat" type="textfield" name="alamat" class="mt-1 block w-full"
+                            <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full"
                                 required value="{{ old('alamat', $instansi->alamat) }}" />
                             <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
                         </div>
