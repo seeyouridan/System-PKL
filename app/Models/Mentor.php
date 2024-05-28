@@ -10,9 +10,19 @@ class Mentor extends Model
 {
     use HasFactory;
 
-    public function user()
+    protected $primaryKey = 'id_guru';
+
+    protected $fillable = [
+        'nip_guru',
+        'nama_guru',
+        'jenis_kelamin',
+        'no_telp',
+        'id_user',
+    ];
+
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function mentor(): BelongsTo

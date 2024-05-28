@@ -19,7 +19,7 @@
 
                 @hasrole('kajur')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
+                    <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index') || request()->routeIs('guru.create')">
                         {{ __('Kelola Guru') }}
                     </x-nav-link>
                 </div>
