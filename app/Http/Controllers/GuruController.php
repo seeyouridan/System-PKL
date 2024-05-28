@@ -50,7 +50,7 @@ class GuruController extends Controller
         $user->password = Hash::make('Password123');
         $user->save();
 
-        $guru = Guru::create([
+        $guru = Mentor::create([
             'nip_guru' => $validate['nip_guru'],
             'nama_guru' => $validate['nama_guru'],
             'jenis_kelamin' => $validate['jenis_kelamin'],

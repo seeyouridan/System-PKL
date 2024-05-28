@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/guru/{id_guru}/edit', [GuruController::class, 'edit'])->name('guru.edit');
     Route::match(['put', 'patch'], '/guru/{id_guru}', [GuruController::class, 'update'])->name('guru.update');
     Route::delete('/guru/{id_guru}', [GuruController::class, 'destroy'])->name('guru.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/instansi', [InstansiController::class, 'index'])->name('instansi.index');
+    Route::get('/instansi/create', [InstansiController::class, 'create'])->name('instansi.create');
+    Route::post('/instansi', [InstansiController::class, 'store'])->name('instansi.store');
+    Route::get('/instansi/{id_instansi}/edit', [InstansiController::class, 'edit'])->name('instansi.edit');
+    Route::match(['put', 'patch'], '/instansi/{id_instansi}', [InstansiController::class, 'update'])->name('instansi.update');
+    Route::delete('/instansi/{id_instansi}', [InstansiController::class, 'destroy'])->name('instansi.destroy');
 });
 
 require __DIR__.'/auth.php';

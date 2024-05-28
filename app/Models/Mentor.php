@@ -10,6 +10,8 @@ class Mentor extends Model
 {
     use HasFactory;
 
+    protected $table = 'mentors';
+
     protected $primaryKey = 'id_guru';
 
     protected $fillable = [
@@ -27,6 +29,6 @@ class Mentor extends Model
 
     public function mentor(): BelongsTo
     {
-        return $this->belongsTo(Guru::class);
+        return $this->belongsTo(Mentor::class);
     }
 }
