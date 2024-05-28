@@ -18,18 +18,39 @@
                 </div>
 
                 @hasrole('kajur')
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index') || request()->routeIs('guru.create')">
-                        {{ __('Kelola Guru') }}
-                    </x-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index') || request()->routeIs('guru.create')">
+                            {{ __('Kelola Guru') }}
+                        </x-nav-link>
+                    </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index') || request()->routeIs('instansi.create')">
-                        {{ __('Kelola Instansi') }}
-                    </x-nav-link>
-                </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index') || request()->routeIs('instansi.create')">
+                            {{ __('Kelola Instansi') }}
+                        </x-nav-link>
+                    </div>
                 @endhasrole
+
+                @hasrole('siswa')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
+                            {{ __('Data Guru Pembimbing') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
+                            {{ __('Data Instansi') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
+                            {{ __('Presensi') }}
+                        </x-nav-link>
+                    </div>
+                @endhasrole
+
             </div>
 
             <!-- Settings Dropdown -->

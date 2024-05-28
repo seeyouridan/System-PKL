@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/instansi/{id_instansi}/edit', [InstansiController::class, 'edit'])->name('instansi.edit');
     Route::match(['put', 'patch'], '/instansi/{id_instansi}', [InstansiController::class, 'update'])->name('instansi.update');
     Route::delete('/instansi/{id_instansi}', [InstansiController::class, 'destroy'])->name('instansi.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi.index');
 });
 
 require __DIR__.'/auth.php';

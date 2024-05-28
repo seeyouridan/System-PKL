@@ -2,8 +2,6 @@
 @include('guru.edit')
 @include('guru.delete')
 
-<title>Ketua Jurusan - Kelola Guru</title>
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -15,10 +13,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
-                <button type="button" class="btn btn-outline-secondary m-4" data-bs-toggle="modal"
-                    data-bs-target="#tambahModal">
-                    Tambah ➕
-                </button>
+                @hasrole('kajur')
+                    <button type="button" class="btn btn-outline-secondary m-4" data-bs-toggle="modal"
+                        data-bs-target="#tambahModal">
+                        Tambah ➕
+                    </button>
+                @endhasrole
 
                 <div class="p-6 text-gray-900">
                     <x-table :tableId="'myTable_' . uniqid()">
