@@ -43,7 +43,7 @@
                                     {{ $data->kota->id_kota }} - {{ $data->kota->kota }}
                                 </td>
                                 <td>
-                                    <button tag="a" type="button" class="btn btn-outline-"
+                                    <button tag="a" type="button" class="btn btn-outline-success"
                                         data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_instansi }}">
                                         {{ __('📂') }}
                                     </button>

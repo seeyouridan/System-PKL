@@ -39,7 +39,7 @@
                                 <td>{{ $data->nip_guru }}</td>
                                 <td>{{ $data->nama_guru }}</td>
                                 <td>
-                                    <button tag="a" type="button" class="btn btn-outline-"
+                                    <button tag="a" type="button" class="btn btn-outline-success"
                                         data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_guru }}">
                                         {{ __('📂') }}
                                     </button>
