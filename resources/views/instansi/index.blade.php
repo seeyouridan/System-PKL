@@ -11,13 +11,13 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="w-auto mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 @hasrole('kajur')
                     <button type="button" class="btn btn-outline-secondary m-4" data-bs-toggle="modal"
                         data-bs-target="#tambahModal">
-                        Tambah ➕
+                        Tambah <i class="fa-solid fa-circle-plus"></i>
                     </button>
                 @endhasrole
 
@@ -45,17 +45,17 @@
                                 <td>
                                     <button tag="a" type="button" class="btn btn-outline-success"
                                         data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_instansi }}">
-                                        {{ __('📂') }}
+                                        <i class="fa-solid fa-folder"></i>
                                     </button>
 
                                     @hasrole('kajur')
                                         <button tag="a" type="button" class="btn btn-outline-warning"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id_instansi }}">
-                                            {{ __('🖍') }}
+                                            <i class="fa-solid fa-pencil"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                                             data-bs-target="#hapusModal_{{ $data->id_instansi }}">
-                                            {{ __('🗑') }}
+                                            <i class="fa-solid fa-trash"></i>
                                         </button>
                                     @endhasrole
                                 </td>
