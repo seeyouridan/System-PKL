@@ -1,6 +1,7 @@
 @include('guru.create')
 @include('guru.edit')
 @include('guru.delete')
+@include('guru.open')
 
 <x-app-layout>
     <x-slot name="header">
@@ -10,7 +11,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 @hasrole('kajur')
@@ -27,13 +28,7 @@
                                 <th>No.</th>
                                 <th>NIP / NUPTK</th>
                                 <th>Nama Guru</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No. Telp</th>
-
-                                @hasrole('kajur')
-                                    <th>Aksi</th>
-                                @endhasrole
-
+                                <th>Aksi</th>
                             </tr>
                         </x-slot>
 
@@ -44,16 +39,12 @@
                                 <td>{{ $data->nip_guru }}</td>
                                 <td>{{ $data->nama_guru }}</td>
                                 <td>
-                                    @if ($data->jenis_kelamin == 'L')
-                                        Laki-Laki
-                                    @elseif($data->jenis_kelamin == 'P')
-                                        Perempuan
-                                    @endif
-                                </td>
-                                <td>{{ $data->no_telp }}</td>
+                                    <button tag="a" type="button" class="btn btn-outline-"
+                                        data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_guru }}">
+                                        {{ __('📂') }}
+                                    </button>
 
-                                @hasrole('kajur')
-                                    <td>
+                                    @hasrole('kajur')
                                         <button tag="a" type="button" class="btn btn-outline-warning"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id_guru }}">
                                             {{ __('🖍') }}
@@ -62,8 +53,8 @@
                                             data-bs-target="#hapusModal_{{ $data->id_guru }}">
                                             {{ __('🗑') }}
                                         </button>
-                                    </td>
-                                @endhasrole
+                                    @endhasrole
+                                </td>
 
                             </tr>
                         @endforeach

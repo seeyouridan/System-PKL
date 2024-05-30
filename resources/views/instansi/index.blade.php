@@ -1,6 +1,7 @@
 @include('instansi.create')
 @include('instansi.edit')
 @include('instansi.delete')
+@include('instansi.open')
 
 <x-app-layout>
     <x-slot name="header">
@@ -28,12 +29,7 @@
                                 <th>Instansi</th>
                                 <th>Alamat</th>
                                 <th>Kota</th>
-                                <th>Nomor Telepon</th>
-
-                                @hasrole('kajur')
-                                    <th>Aksi</th>
-                                @endhasrole
-
+                                <th>Aksi</th>
                             </tr>
                         </x-slot>
 
@@ -46,10 +42,13 @@
                                 <td>
                                     {{ $data->kota->id_kota }} - {{ $data->kota->kota }}
                                 </td>
-                                <td>{{ $data->no_telp }}</td>
+                                <td>
+                                    <button tag="a" type="button" class="btn btn-outline-"
+                                        data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_instansi }}">
+                                        {{ __('📂') }}
+                                    </button>
 
-                                @hasrole('kajur')
-                                    <td>
+                                    @hasrole('kajur')
                                         <button tag="a" type="button" class="btn btn-outline-warning"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id_instansi }}">
                                             {{ __('🖍') }}
@@ -58,9 +57,8 @@
                                             data-bs-target="#hapusModal_{{ $data->id_instansi }}">
                                             {{ __('🗑') }}
                                         </button>
-                                    </td>
-                                @endhasrole
-
+                                    @endhasrole
+                                </td>
                             </tr>
                         @endforeach
                     </x-table>
