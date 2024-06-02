@@ -28,8 +28,8 @@ class Instance extends Model
         return $this->belongsTo(Kota::class, 'id_kota');
     }
 
-    public function instansi(): BelongsTo
+    public function mentor(): BelongsTo
     {
-        return $this->belongsTo(Instance::class);
+        return $this->belongsTo(Mentor::class, 'id_guru');
     }
 }

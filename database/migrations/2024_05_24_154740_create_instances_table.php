@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('id_kota')->unsigned();
             $table->foreign('id_kota')->references('id_kota')->on('cities')->onDelete('cascade')->onUpdate('cascade');
             $table->string('no_telp', 15)->nullable();
+            $table->integer('id_guru')->unsigned();
+            $table->foreign('id_guru')->references('id_guru')->on('mentors')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

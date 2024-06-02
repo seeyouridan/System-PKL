@@ -16,7 +16,7 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $data['mentors'] = Mentor::with('mentor')->get();
+        $data['mentors'] = Mentor::get();
         return view('guru.index', $data);
     }
 

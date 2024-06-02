@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             CitySeeder::class,
-            InstanceSeeder::class,
             MajorSeeder::class,
             KajurSeeder::class,
             MentorSeeder::class,
+            InstanceSeeder::class,
             StudentSeeder::class,
         ]);
     }

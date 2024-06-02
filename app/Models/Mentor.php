@@ -26,9 +26,4 @@ class Mentor extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
-
-    public function mentor(): BelongsTo
-    {
-        return $this->belongsTo(Mentor::class);
-    }
 }
