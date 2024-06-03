@@ -20,7 +20,8 @@ class Instance extends Model
         'kuota',
         'alamat',
         'id_kota',
-        'no_telp'
+        'no_telp',
+        'id_guru',
     ];
 
     public function kota(): BelongsTo

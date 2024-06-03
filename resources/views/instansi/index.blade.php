@@ -11,7 +11,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8">
+        <div class="w-auto mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 @hasrole('kajur')
@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $num++ }}</td>
                                 <td>{{ $data->kode_instansi }} - {{ $data->nama_instansi }}</td>
-                                <td>{{ $data->alamat }}</td>
+                                <td>{{ Str::limit($data->alamat, 50) }}</td>
                                 <td>
                                     {{ $data->kota->id_kota }} - {{ $data->kota->kota }}
                                 </td>

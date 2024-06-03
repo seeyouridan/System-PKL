@@ -39,13 +39,14 @@
                         <div class="max-w-xl">
                             <x-input-label for="alamat" value="Alamat Instansi" />
                             <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full"
-                            required autocomplete value="{{ old('alamat', $instansi->alamat) }}" />
+                                required autocomplete value="{{ old('alamat', $instansi->alamat) }}" />
                             <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
                         </div>
 
                         <div class="max-w-xl">
                             <x-input-label for="id_kota" value="Kota" />
-                            <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required autocomplete>
+                            <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required
+                                autocomplete>
                                 <option value="">Pilih Kota</option>
                                 <option value="1"
                                     {{ old('kota', $instansi->kota) === 'Cianjur' ? 'selected' : '' }}>Cianjur
@@ -67,8 +68,33 @@
                         <div class="max-w-xl">
                             <x-input-label for="no_telp" value="Nomor Telepon" />
                             <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full"
-                                value="{{ old('no_telp', $instansi->no_telp) }}" autocomplete/>
+                                value="{{ old('no_telp', $instansi->no_telp) }}" autocomplete />
                             <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
+                        </div>
+
+                        <div class="max-w-xl">
+                            <x-input-label for="id_guru" value="Guru Pembimbing" />
+                            <x-select-input id="id_guru" name="id_guru" class="mt-1 block w-full" required
+                                autocomplete>
+                                <option value="">Pilih Guru</option>
+                                <option value="2"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'Dessi Andriani, S. T.' ? 'selected' : '' }}>Dessi Andriani, S. T.</option>
+                                <option value="3"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'Kani Muthmainnah, S. T., M. Ars.' ? 'selected' : '' }}>Kani
+                                    Muthmainnah, S. T., M. Ars.</option>
+                                <option value="4"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'Ikmal Bahrul Alam, S. Pd.' ? 'selected' : '' }}>Ikmal Bahrul
+                                    Alam, S. Pd.</option>
+                                <option value="5"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'R. Luki Muharam, S. ST.' ? 'selected' : '' }}>R. Luki
+                                    Muharam, S. ST.</option>
+                                <option value="6"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'Sri Mulyani, S. Pd.' ? 'selected' : '' }}>Sri Mulyani, S.
+                                    Pd.</option>
+                                <option value="7"
+                                    {{ old('id_guru', $instansi->mentor->nama_guru) === 'Tatang Sudrajat, S. Pd.' ? 'selected' : '' }}>Tatang
+                                    Sudrajat, S. Pd.</option>
+                            </x-select-input>
                         </div>
 
                         <div class="modal-footer">

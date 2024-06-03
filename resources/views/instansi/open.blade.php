@@ -17,7 +17,7 @@
                                     <label>Kode Instansi</label>
                                 </div>
                                 <div>
-                                    <p>{{ $instansi->kode_instansi }}</p>
+                                    <p>{{ $instansi->id_instansi }}</p>
                                 </div>
                             </div>
                         @endif
@@ -28,6 +28,15 @@
                             </div>
                             <div>
                                 <p>{{ $instansi->nama_instansi }}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex-auto">
+                            <div class="font-bold">
+                                <label>Guru Pembimbing</label>
+                            </div>
+                            <div>
+                                <p>{{ $instansi->mentor->nama_guru }}</p>
                             </div>
                         </div>
                     </div>

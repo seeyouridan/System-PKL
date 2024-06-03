@@ -13,26 +13,28 @@
                     <div class="max-w-xl">
                         <x-input-label for="kode_instansi" value="Kode Instansi" />
                         <x-text-input id="kode_instansi" type="text" name="kode_instansi" class="mt-1 block w-full"
-                            required autocomplete/>
+                            required autocomplete value="INS0{{ App\Models\Instance::count() + 1 }}" />
                         <x-input-error class="mt-2" :messages="$errors->get('kode_instansi')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="nama_instansi" value="Nama Instansi" />
-                        <x-text-input id="nama_instansi" type="text" name="nama_instansi"
-                            class="mt-1 block w-full" required autocomplete/>
+                        <x-text-input id="nama_instansi" type="text" name="nama_instansi" class="mt-1 block w-full"
+                            required autocomplete />
                         <x-input-error class="mt-2" :messages="$errors->get('nama_instansi')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="kuota" value="Kuota Siswa/i" />
-                        <x-text-input id="kuota" type="text" name="kuota" class="mt-1 block w-full" required autocomplete />
+                        <x-text-input id="kuota" type="text" name="kuota" class="mt-1 block w-full" required
+                            autocomplete />
                         <x-input-error class="mt-2" :messages="$errors->get('kuota')" />
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="alamat" value="Alamat Instansi" />
-                        <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full" required autocomplete/>
+                        <x-text-input id="alamat" type="text" name="alamat" class="mt-1 block w-full" required
+                            autocomplete />
                         <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
                     </div>
 
@@ -40,25 +42,55 @@
                         <x-input-label for="id_kota" value="Kota" />
                         <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required autocomplete>
                             <option value="">Pilih Kota</option>
-                            <option value="1" {{ old('kota') === 'Cianjur' ? 'selected' : '' }}>Cianjur</option>
-                            <option value="2" {{ old('kota') === 'Bandung' ? 'selected' : '' }}>Bandung</option>
-                            <option value="3" {{ old('kota') === 'Sukabumi' ? 'selected' : '' }}>Sukabumi</option>
+                            <option value="1" {{ old('kota') === 'Cianjur' ? 'selected' : '' }}>Cianjur
+                            </option>
+                            <option value="2" {{ old('kota') === 'Bandung' ? 'selected' : '' }}>Bandung
+                            </option>
+                            <option value="3" {{ old('kota') === 'Sukabumi' ? 'selected' : '' }}>Sukabumi
+                            </option>
                             <option value="4" {{ old('kota') === 'Bogor' ? 'selected' : '' }}>Bogor</option>
-                            <option value="5" {{ old('kota') === 'Jakarta' ? 'selected' : '' }}>Jakarta</option>
+                            <option value="5" {{ old('kota') === 'Jakarta' ? 'selected' : '' }}>Jakarta
+                            </option>
                         </x-select-input>
                     </div>
 
                     <div class="max-w-xl">
                         <x-input-label for="no_telp" value="Nomor Telepon" />
-                        <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full" autocomplete/>
+                        <x-text-input id="no_telp" type="text" name="no_telp" class="mt-1 block w-full"
+                            autocomplete />
                         <x-input-error class="mt-2" :messages="$errors->get('no_telp')" />
+                    </div>
+
+                    <div class="max-w-xl">
+                        <x-input-label for="id_guru" value="Guru Pembimbing" />
+                        <x-select-input id="id_guru" name="id_guru" class="mt-1 block w-full" required autocomplete>
+                            <option value="">Pilih Guru</option>
+                            <option value="2" {{ old('id_guru') === 'Dessi Andriani, S. T.' ? 'selected' : '' }}>
+                                Dessi Andriani,
+                                S. T.</option>
+                            <option value="3"
+                                {{ old('id_guru') === 'Kani Muthmainnah, S. T., M. Ars.' ? 'selected' : '' }}>Kani
+                                Muthmainnah, S. T., M. Ars.</option>
+                            <option value="4"
+                                {{ old('id_guru') === 'Ikmal Bahrul Alam, S. Pd.' ? 'selected' : '' }}>Ikmal Bahrul
+                                Alam, S. Pd.</option>
+                            <option value="5" {{ old('id_guru') === 'R. Luki Muharam, S. ST.' ? 'selected' : '' }}>
+                                R. Luki
+                                Muharam, S. ST.</option>
+                            <option value="6" {{ old('id_guru') === 'Sri Mulyani, S. Pd.' ? 'selected' : '' }}>Sri
+                                Mulyani, S.
+                                Pd.</option>
+                            <option value="7"
+                                {{ old('id_guru') === 'Tatang Sudrajat, S. Pd.' ? 'selected' : '' }}>Tatang
+                                Sudrajat, S. Pd.</option>
+                        </x-select-input>
                     </div>
 
                     <div class="modal-footer">
                         <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
                         <x-primary-button name="save" value="true">Simpan</x-primary-button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>

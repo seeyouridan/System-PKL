@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Instance;
 use App\Models\Kota;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,7 @@ class InstansiController extends Controller
             'alamat' => 'required',
             'id_kota' => 'required|integer|max:10',
             'no_telp' => 'nullable|max:15',
+            'id_guru' => 'required|integer|max:10'
         ]);
 
         // dd($validate);
@@ -75,8 +77,9 @@ class InstansiController extends Controller
      */
     public function edit(string $id_instansi)
     {
-        $instansi = Instance::with('kota')->findOrFail($id_instansi);
-        return view('instansi.edit', ['instansi' => $instansi]);
+        $instansi = Instance::with('kota', 'mentor')->findOrFail($id_instansi);
+        $mentors = Mentor::all();
+        return view('instansi.edit', ['instansi' => $instansi, 'mentors' => $mentors]);
     }
 
     /**
@@ -91,6 +94,7 @@ class InstansiController extends Controller
             'alamat' => 'required',
             'id_kota' => 'required|integer|max:10',
             'no_telp' => 'nullable|max:15',
+            'id_guru' => 'required|integer|max:10',
         ]);
 
         // dd($validate);
@@ -125,7 +129,7 @@ class InstansiController extends Controller
     public function destroy(string $id_instansi)
     {
         $instansi = Instance::findOrFail($id_instansi);
-        
+
         $oldKotaId = $instansi->id_kota;
 
         $instansi->delete();
