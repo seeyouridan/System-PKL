@@ -11,28 +11,49 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @if (Auth::check())
-                        Ini halaman
-                        @foreach (Auth::user()->roles as $role)
-                            {{ $role->name }}
-                        @endforeach
-                        - Selamat datang {{ Auth::user()->name }}!
+                        @php
+                            $userId = Auth::id();
+
+                            $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+
+                            $sapaan = '';
+                            if ($mentor) {
+                                if ($mentor->jenis_kelamin == 'L') {
+                                    $sapaan = 'Pak';
+                                } elseif ($mentor->jenis_kelamin == 'P') {
+                                    $sapaan = 'Ibu';
+                                }
+                            }
+                        @endphp
+
+                        Selamat datang, {{ $sapaan }} {{ Auth::user()->name }}!
                     @endif
                 </div>
             </div>
 
             @hasrole('kajur')
-                <div class="flex pt-4 gap-4">
-                    <div class="bg-white w-48 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex flex-wrap pt-4 gap-4">
+                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Guru</h2>
+                            <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Guru</h2>
+                            <small>Data guru yang tercatat sebagai pembimbing PKL</small>
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Mentor::count() }}</p>
                         </div>
                     </div>
 
-                    <div class="bg-white w-48 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
+                            <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Instansi</h2>
+                            <small>Data instansi yang tercatat sebagai lokasi PKL</small>
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Instance::count() }}</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Siswa/i</h2>
+                            <small>Data siswa/siswi yang tercatat sebagai pelaksana PKL</small>
+                            <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Student::count() }}</p>
                         </div>
                     </div>
                 </div>

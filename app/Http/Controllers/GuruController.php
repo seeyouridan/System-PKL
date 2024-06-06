@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Guru;
 use App\Models\Mentor;
 use App\Models\User;
 use Illuminate\Http\Request;

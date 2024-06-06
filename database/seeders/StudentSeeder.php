@@ -25,7 +25,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'M. Mardi',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -34,7 +34,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'M. Zidan Maulana',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -43,7 +43,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Eneng Resa Latifatul Zakiyah',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -52,7 +52,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhamad Ilham Fakih',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -61,7 +61,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Helva Hadiprawira',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -70,16 +70,16 @@ class StudentSeeder extends Seeder
                 'nama' => 'Resti Faujiani',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
                 'password' => Hash::make('Password123'),
                 'nis' => '222310011',
                 'nama' => 'Hera Rahmaniah',
-                'jenis_kelamin' => 'p',
+                'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -88,7 +88,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Riska Aulia Soparina',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -97,7 +97,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Ani Nurfitri',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -106,7 +106,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Siti Fityatul Kamila',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -115,7 +115,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Naufal Arinda Rizqullah',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -124,7 +124,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhamad Dikri Langlang Buana',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 1,
+                'id_guru' => 2,
             ],
 
             [
@@ -133,7 +133,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Andra',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -142,7 +142,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Jihan Novita Angel',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -151,7 +151,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhammad Saepul Ramdan',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -160,7 +160,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhamad Wildan',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -169,7 +169,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhamad Rais Alfian',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -178,7 +178,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Gio Deska Syafa\'at',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 2,
+                'id_guru' => 3,
             ],
 
             [
@@ -187,7 +187,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Farhan Maulana',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -196,7 +196,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Reza Aditya',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -205,7 +205,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Agil Lukman Ramadan',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -214,7 +214,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'M. Fauzan Hidayat',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -223,7 +223,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Ady Wibowo',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -232,7 +232,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Azmil Halim',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -241,7 +241,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhammad Fatih Budiman',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -250,7 +250,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Rijal Septiani',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -259,7 +259,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Al - Aswag Nazaila',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -268,7 +268,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Eden Abdullah',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -277,7 +277,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Gun Gun Gunawan',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -286,7 +286,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Siva Maharani',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -295,7 +295,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhammad Rizal Fauzi',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -304,7 +304,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Vanesha Al Ghanny',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -313,7 +313,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Jihan Cahya',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -322,7 +322,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Nadia Nurapipah',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -331,7 +331,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Najwa Ululazmi',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -340,7 +340,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Resti Nur Rahmah',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -349,7 +349,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Zahra Amelia',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -358,7 +358,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'M. Rifcki Azwar',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 3,
+                'id_guru' => 4,
             ],
 
             [
@@ -367,7 +367,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Auriel Oktavia Zsahwa',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 4,
+                'id_guru' => 5,
             ],
 
             [
@@ -376,7 +376,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Dimas Surya Muhamad Nuralim',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 4,
+                'id_guru' => 5,
             ],
 
             [
@@ -385,7 +385,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhammad Hafidz Fauzan',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 1,
-                'id_guru' => 4,
+                'id_guru' => 5,
             ],
 
             [
@@ -394,7 +394,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Geral Guruh Pamungkas',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 4,
+                'id_guru' => 5,
             ],
 
             [
@@ -403,7 +403,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'M. Fachrul Hammam Romadhon',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 4,
+                'id_guru' => 5,
             ],
 
             [
@@ -412,7 +412,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Leah Latifah Robaniah',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 5,
+                'id_guru' => 6,
             ],
 
             [
@@ -421,7 +421,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Nabila',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 5,
+                'id_guru' => 6,
             ],
 
             [
@@ -430,7 +430,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Rida Septian Ramdani',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 1,
-                'id_guru' => 5,
+                'id_guru' => 6,
             ],
 
             [
@@ -439,7 +439,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Dinda Avrelia',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -448,7 +448,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Sri Wahyuni',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -457,7 +457,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Nur Rizqi Sindi',
                 'jenis_kelamin' => 'P',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -466,7 +466,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Indra Pangestu',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -475,7 +475,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhamad Rizqy Awaludin',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -484,7 +484,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Muhammad Irwansyah',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -493,7 +493,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Ahmad Jaki Barjanji',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -502,7 +502,7 @@ class StudentSeeder extends Seeder
                 'nama' => 'Rizky Maulana Putra',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
 
             [
@@ -511,11 +511,9 @@ class StudentSeeder extends Seeder
                 'nama' => 'Reza Fauzia',
                 'jenis_kelamin' => 'L',
                 'id_jurusan' => 2,
-                'id_guru' => 6,
+                'id_guru' => 7,
             ],
         ];
-
-
 
         foreach ($data as $item) {
             $user = User::create([

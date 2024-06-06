@@ -4,6 +4,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/instansi/{id_instansi}/edit', [InstansiController::class, 'edit'])->name('instansi.edit');
     Route::match(['put', 'patch'], '/instansi/{id_instansi}', [InstansiController::class, 'update'])->name('instansi.update');
     Route::delete('/instansi/{id_instansi}', [InstansiController::class, 'destroy'])->name('instansi.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/siswa/{id_siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::match(['put', 'patch'], '/siswa/{id_siswa}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/siswa/{id_siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 });
 
 Route::middleware('auth')->group(function () {

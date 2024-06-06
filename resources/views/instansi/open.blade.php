@@ -12,12 +12,12 @@
 
                     <div class="flex">
                         @if (Auth::user()->hasRole('kajur') || Auth::user()->hasRole('guru'))
-                            <div class="w-48">
+                            <div class="flex-auto">
                                 <div class="font-bold">
                                     <label>Kode Instansi</label>
                                 </div>
                                 <div>
-                                    <p>{{ $instansi->id_instansi }}</p>
+                                    <p>{{ $instansi->kode_instansi }}</p>
                                 </div>
                             </div>
                         @endif
