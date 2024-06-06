@@ -1,9 +1,10 @@
-@include('siswa.create')
-{{-- @include('siswa.edit') --}}
-{{-- @include('siswa.delete') --}}
-{{-- @include('siswa.open') --}}
-
 <x-app-layout>
+
+    @include('siswa.create')
+    {{-- @include('siswa.edit') --}}
+    {{-- @include('siswa.delete') --}}
+    {{-- @include('siswa.open') --}}
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Kelola Siswa') }}

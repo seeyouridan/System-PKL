@@ -1,9 +1,10 @@
-@include('instansi.create')
-@include('instansi.edit')
-@include('instansi.delete')
-@include('instansi.open')
-
 <x-app-layout>
+
+    @include('instansi.create')
+    @include('instansi.edit')
+    @include('instansi.delete')
+    @include('instansi.open')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Kelola Instansi') }}

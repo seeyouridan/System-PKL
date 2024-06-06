@@ -1,9 +1,10 @@
-@include('guru.create')
-@include('guru.edit')
-@include('guru.delete')
-@include('guru.open')
-
 <x-app-layout>
+
+    @include('guru.create')
+    @include('guru.edit')
+    @include('guru.delete')
+    @include('guru.open')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Kelola Instansi') }}
