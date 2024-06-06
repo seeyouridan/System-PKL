@@ -6,72 +6,31 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center">
-                        <img src="{{ asset('img/icon-jurusan.png') }}" alt="Icon Jurusan" class="block h-16 w-auto fill-current text-gray-800">
+                        <img src="{{ asset('img/icon-jurusan.png') }}" alt="Icon Jurusan"
+                            class="block h-16 w-auto fill-current text-gray-800">
                     </a>
                     <span class="ml-3 text-lg font-semibold text-gray-800">SI PKL</span>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-
-                @hasrole('kajur')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index') || request()->routeIs('guru.create')">
-                            {{ __('Kelola Guru Pembimbing') }}
-                        </x-nav-link>
-                    </div>
-
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index') || request()->routeIs('instansi.create')">
-                            {{ __('Kelola Instansi') }}
-                        </x-nav-link>
-                    </div>
-
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
-                            {{ __('Kelola Siswa') }}
-                        </x-nav-link>
-                    </div>
-                @endhasrole
-
-                @hasrole('guru')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                            {{ __('Data Instansi') }}
-                        </x-nav-link>
-                    </div>
-
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
-                            {{ __('Data Siswa') }}
-                        </x-nav-link>
-                    </div>
-                @endhasrole
-
                 @hasrole('siswa')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
-                            {{ __('Data Guru Pembimbing') }}
+                            <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Data Guru Pembimbing') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                            {{ __('Data Instansi') }}
+                            <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
-                            {{ __('Presensi') }}
+                            <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
                         </x-nav-link>
                     </div>
                 @endhasrole
-
             </div>
 
             <!-- Settings Dropdown -->
@@ -132,35 +91,38 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <i class="fa-solid fa-dashboard pr-2"></i>{{ __('Dashboard') }}
             </x-responsive-nav-link>
 
             @hasrole('kajur')
                 <x-responsive-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
-                    {{ __('Kelola Guru Pembimbing') }}
+                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Kelola Guru Pembimbing') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                    {{ __('Kelola Instansi') }}
+                    <i class="fa-solid fa-industry pr-2"></i>{{ __('Kelola Instansi') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
-                    {{ __('Kelola Siswa') }}
+                    <i class="fa-solid fa-users pr-2"></i>{{ __('Kelola Siswa') }}
                 </x-responsive-nav-link>
             @endhasrole
 
-            @if (Auth::user()->hasRole('siswa') || Auth::user()->hasRole('guru'))
-                <x-responsive-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
-                    {{ __('Data Guru Pembimbing') }}
-                </x-responsive-nav-link>
+            @hasrole('siswa')
                 <x-responsive-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                    {{ __('Data Instansi') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
-                    {{ __('Data Siswa') }}
+                    <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
-                    {{ __('Presensi') }}
+                    <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
                 </x-responsive-nav-link>
-            @endif
+            @endhasrole
+
+            @hasrole('guru')
+                <x-responsive-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
+                    <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
+                    <i class="fa-solid fa-users pr-2"></i>{{ __('Data Siswa') }}
+                </x-responsive-nav-link>
+            @endhasrole
         </div>
 
         <!-- Responsive Settings Options -->

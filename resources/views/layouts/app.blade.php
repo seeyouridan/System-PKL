@@ -33,6 +33,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
+        <!-- Nav Profile -->
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -44,12 +45,21 @@
             </header>
         @endif
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        <div class="flex">
+            <!--Sidebar Menu -->
+            <div class="w-96 hidden sm:block">
+                @include('layouts.sidebar')
+            </div>
+
+            <!-- Page Content -->
+            <div class="w-full">
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
+        </div>
     </div>
-    
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const Toast = Swal.mixin({
