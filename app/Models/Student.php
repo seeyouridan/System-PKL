@@ -12,16 +12,20 @@ class Student extends Model
 
     protected $table = 'students';
 
+    protected $primaryKey = 'id_siswa';
+
     protected $fillable = [
+        'nis',
         'nama',
         'jenis_kelamin',
         'id_jurusan',
         'id_guru',
+        'id_user',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function major(): BelongsTo

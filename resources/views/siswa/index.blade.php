@@ -1,8 +1,8 @@
 <x-app-layout>
 
     @include('siswa.create')
-    {{-- @include('siswa.edit') --}}
-    {{-- @include('siswa.delete') --}}
+    @include('siswa.edit')
+    @include('siswa.delete')
     {{-- @include('siswa.open') --}}
 
     <x-slot name="header">
@@ -24,7 +24,7 @@
 
                 <div class="p-6 text-gray-900">
                     @if ($students->isEmpty())
-                        <p>No students assigned to you.</p>
+                        <p>Belum ada siswa bimbingan.</p>
                     @else
                         <x-table :tableId="'myTable_' . uniqid()">
                             <x-slot name="header">
@@ -35,7 +35,6 @@
                                     <th>Jenis Kelamin</th>
                                     <th>Jurusan</th>
                                     <th>Aksi</th>
-                                </tr>
                                 </tr>
                             </x-slot>
 
@@ -54,19 +53,19 @@
                                     </td>
                                     <td>{{ $data->major->nama_jurusan }}</td>
                                     <td>
-                                        <button tag="a" type="button" class="btn btn-outline-success"
-                                            data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_instansi }}">
+                                        {{-- <button tag="a" type="button" class="btn btn-outline-success"
+                                            data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_siswa }}">
                                             <i class="fa-solid fa-folder"></i>
-                                        </button>
+                                        </button> --}}
 
                                         @hasrole('kajur')
                                             <button tag="a" type="button" class="btn btn-outline-warning"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal_{{ $data->id_instansi }}">
+                                                data-bs-target="#exampleModal_{{ $data->id_siswa }}">
                                                 <i class="fa-solid fa-pencil"></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                                data-bs-target="#hapusModal_{{ $data->id_instansi }}">
+                                                data-bs-target="#hapusModal_{{ $data->id_siswa }}">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         @endhasrole

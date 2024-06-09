@@ -17,17 +17,6 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        // $userId = Auth::id();
-
-        // $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
-
-        // if ($mentor) {
-        //     $students = Student::where('id_guru', $mentor->id_guru)->with('major')->get();
-        // } else {
-        //     $students = collect();
-        // }
-
-        // return view('siswa.index', ['students' => $students]);
         if (Auth::check()) {
             foreach (Auth::user()->roles as $role) {
                 if ($role->name == 'guru') {
@@ -58,7 +47,7 @@ class SiswaController extends Controller
     {
         $data['majors'] = Student::pluck('major', 'id_jurusan')->get();
         $data['mentor'] = Student::pluck('mentor', 'id_guru')->get();
-        return view('guru.create', $data);
+        return view('siswa.create', $data);
     }
 
     /**
@@ -67,32 +56,29 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'username' => 'required|max:255',
             'nis' => 'required|max:30',
             'nama' => 'required|max:50',
             'id_jurusan' => 'required|max:10',
             'jenis_kelamin' => 'required|max:5',
-            'id_guru' => 'required|max:10',
         ]);
 
         // dd($validate);
 
         $user = new User();
         $user->name = $validate['nama'];
-        $user->username = $validate['username'];
+        $user->username = $validate['nis'];
         $user->password = Hash::make('Password123');
         $user->save();
 
-        $guru = Mentor::create([
+        $siswa = Student::create([
             'nis' => $validate['nis'],
             'nama' => $validate['nama'],
             'id_jurusan' => $validate['id_jurusan'],
             'jenis_kelamin' => $validate['jenis_kelamin'],
-            'id_guru' => $validate['id_guru'],
             'id_user' => $user->id,
         ]);
 
-        $user->assignRole('guru');
+        $user->assignRole('siswa');
 
         $notificaion = array(
             'message' => "Data siswa berhasil ditambahkan",
@@ -117,24 +103,69 @@ class SiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_siswa)
     {
-        //
+        $siswa = Student::with('user')->findOrFail($id_siswa);
+        return view('siswa.edit', ['siswa' => $siswa]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_siswa)
     {
-        //
+        $validate = $request->validate([
+            'nis' => 'required|max:30',
+            'nama' => 'required|max:50',
+            'id_jurusan' => 'required|max:10',
+            'jenis_kelamin' => 'required|max:5',
+        ]);
+
+        // dd($validate);
+
+        $siswa = Student::findOrFail($id_siswa);
+        $user = User::find($siswa->id_user);
+
+        $user->name = $validate['nama'];
+        $user->username = $validate['nis'];
+        $user->save();
+
+        $user->update([
+            'username' => $validate['nis'],
+            'name' => $validate['nama'],
+        ]);
+
+        $siswa->update([
+            'nis' => $validate['nis'],
+            'nama' => $validate['nama'],
+            'id_jurusan' => $validate['id_jurusan'],
+            'jenis_kelamin' => $validate['jenis_kelamin'],
+        ]);
+
+        $notification = [
+            'message' => "Data siswa berhasil diperbarui",
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('siswa.index')->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_siswa)
     {
-        //
+        $siswa = Student::findOrFail($id_siswa);
+        $user = User::find($siswa->id_user);
+
+        $siswa->delete();
+        $user->delete();
+
+        $notification = array(
+            'message' => "Data siswa berhasil dihapus",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('siswa.index')->with($notification);
     }
 }

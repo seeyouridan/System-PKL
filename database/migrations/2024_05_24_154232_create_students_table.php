@@ -18,7 +18,7 @@ return new class extends Migration
             $table->char('jenis_kelamin', 5);
             $table->integer('id_jurusan')->unsigned();
             $table->foreign('id_jurusan')->references('id_jurusan')->on('majors')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_guru')->unsigned();
+            $table->integer('id_guru')->unsigned()->nullable();
             $table->foreign('id_guru')->references('id_guru')->on('mentors')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
