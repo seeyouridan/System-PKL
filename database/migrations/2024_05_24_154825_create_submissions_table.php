@@ -15,6 +15,9 @@ return new class extends Migration
             $table->increments('id_pengajuan');
             $table->integer('id_siswa')->unsigned();
             $table->foreign('id_siswa')->references('id_siswa')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('id_kota')->unsigned();
+            $table->foreign('id_kota')->references('id_kota')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

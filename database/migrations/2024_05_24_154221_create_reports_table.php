@@ -15,8 +15,7 @@ return new class extends Migration
             $table->increments('id_laporan');
             $table->string('laporan', 255);
             $table->string('laporan_revisi', 255)->nullable();
-            $table->integer('id_nilai')->unsigned();
-            $table->foreign('id_nilai')->references('id_nilai')->on('values')->onDelete('cascade')->onUpdate('cascade');
+            $table->char('nilai');
             $table->timestamps();
         });
     }
