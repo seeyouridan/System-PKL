@@ -60,12 +60,8 @@
                                 <p>{{ $mentor->nama_guru }}</p>
                             </div>
                         </div>
-                    </div>
 
-                    <br>
-
-                    <div class="flex">
-                        <div class="w-52">
+                        <div class="flex-auto">
                             <div class="font-bold">
                                 <label>Jenis Kelamin</label>
                             </div>
@@ -77,15 +73,6 @@
                                         {{ 'Perempuan' }}
                                     @endif
                                 </p>
-                            </div>
-                        </div>
-
-                        <div class="w-64">
-                            <div class="font-bold">
-                                <label>No. Telp</label>
-                            </div>
-                            <div>
-                                <p>{{ $mentor->no_telp }}</p>
                             </div>
                         </div>
                     </div>

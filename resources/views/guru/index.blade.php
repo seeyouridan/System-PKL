@@ -29,6 +29,7 @@
                                 <th>No.</th>
                                 <th>NIP / NUPTK</th>
                                 <th>Nama Guru</th>
+                                <th>No. Telp</th>
                                 <th>Aksi</th>
                             </tr>
                         </x-slot>
@@ -39,6 +40,7 @@
                                 <td>{{ $num++ }}</td>
                                 <td>{{ $data->nip_guru }}</td>
                                 <td>{{ $data->nama_guru }}</td>
+                                <td>{{ $data->no_telp }}</td>
                                 <td>
                                     <button tag="a" type="button" class="btn btn-outline-success"
                                         data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_guru }}">
