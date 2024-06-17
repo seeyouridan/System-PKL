@@ -46,10 +46,13 @@
         @endif
 
         <div class="flex">
-            <!--Sidebar Menu -->
-            <div class="w-96 hidden sm:block">
-                @include('layouts.sidebar')
-            </div>
+
+            @if (Auth::user()->hasRole('kajur') || Auth::user()->hasRole('guru'))
+                <!--Sidebar Menu -->
+                <div class="w-96 hidden sm:block">
+                    @include('layouts.sidebar')
+                </div>
+            @endif
 
             <!-- Page Content -->
             <div class="w-full">

@@ -13,19 +13,25 @@
                 </div>
 
                 @hasrole('siswa')
-                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
+                            <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
                             <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Data Guru Pembimbing') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
                             <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="hidden pb-10 space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
                             <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
                         </x-nav-link>
@@ -107,6 +113,9 @@
             @endhasrole
 
             @hasrole('siswa')
+                <x-responsive-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
+                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Data Guru Pembimbing') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
                     <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
                 </x-responsive-nav-link>
