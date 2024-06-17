@@ -14,7 +14,7 @@
 
                 @hasrole('siswa')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
