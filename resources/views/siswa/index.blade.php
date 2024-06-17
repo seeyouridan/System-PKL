@@ -34,7 +34,9 @@
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Jurusan</th>
-                                    <th>Aksi</th>
+                                    @hasrole('kajur')
+                                        <th>Aksi</th>
+                                    @endhasrole
                                 </tr>
                             </x-slot>
 
@@ -52,24 +54,23 @@
                                         @endif
                                     </td>
                                     <td>{{ $data->major->nama_jurusan }}</td>
-                                    <td>
-                                        {{-- <button tag="a" type="button" class="btn btn-outline-success"
+                                    @hasrole('kajur')
+                                        <td>
+                                            {{-- <button tag="a" type="button" class="btn btn-outline-success"
                                             data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_siswa }}">
                                             <i class="fa-solid fa-folder"></i>
                                         </button> --}}
 
-                                        @hasrole('kajur')
                                             <button tag="a" type="button" class="btn btn-outline-warning"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal_{{ $data->id_siswa }}">
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id_siswa }}">
                                                 <i class="fa-solid fa-pencil"></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                                                 data-bs-target="#hapusModal_{{ $data->id_siswa }}">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
-                                        @endhasrole
-                                    </td>
+                                        </td>
+                                    @endhasrole
                                 </tr>
                             @endforeach
                         </x-table>
