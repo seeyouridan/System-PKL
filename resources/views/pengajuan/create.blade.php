@@ -14,14 +14,11 @@
                         <x-input-label for="id_kota" value="Kota" />
                         <x-select-input id="id_kota" name="id_kota" class="mt-1 block w-full" required>
                             <option value="" selected>Pilih Kota</option>
-                            @foreach (\App\Models\Kota::all() as $key => $kota)
-                                @if (old('id_kota') == $key)
-                                    <option value="{{ $key }}">{{ $kota->kota }}</option>
-                                @else
-                                    <option value="{{ $key }}">{{ $kota->kota }}</option>
-                                @endif
+                            @foreach (\App\Models\Kota::all() as $kota)
+                                <option value="{{ $kota->id_kota }}">{{ $kota->kota }}</option>
                             @endforeach
                         </x-select-input>
+                        <x-input-error class="mt-2" :messages="$errors->get('id_kota')" />
                     </div>
 
                     <div class="modal-footer">

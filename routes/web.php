@@ -3,6 +3,7 @@
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\PklController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiswaController;
@@ -68,6 +69,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
     Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
+    Route::patch('/pengajuan/{id}/verifikasi', [PengajuanController::class, 'verify'])->name('pengajuan.verify');
+    Route::delete('/pengajuan/{id_pengajuan}', [PengajuanController::class, 'destroy'])->name('pengajuan.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/pkl', [PklController::class, 'index'])->name('pkl.index');
+    Route::get('/pkl/create', [PklController::class, 'create'])->name('pkl.create');
+    Route::post('/pkl', [PklController::class, 'store'])->name('pkl.store');
 });
 
 require __DIR__.'/auth.php';

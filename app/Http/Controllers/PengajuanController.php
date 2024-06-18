@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kota;
+use App\Models\Pkl;
 use App\Models\Student;
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengajuanController extends Controller
 {
@@ -14,7 +16,8 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        $data['submissions'] = Submission::with(['students', 'cities'])->get();
+        // Ambil semua pengajuan untuk ditampilkan di tabel
+        $data['submissions'] = Submission::with('student', 'city')->get();
         return view('pengajuan.index', $data);
     }
 
@@ -25,7 +28,7 @@ class PengajuanController extends Controller
     {
         $data['students'] = Student::all();
         $data['cities'] = Kota::all();
-        return view('pengajuan.create', compact('students', 'cities'));
+        return view('pengajuan.create', compact('student', 'citie'));
     }
 
     /**
@@ -33,7 +36,28 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'id_kota' => 'required|integer|max:10',
+        ]);
+
+        $user = Auth::user();
+        $siswa = $user->student;
+        $id_siswa = $siswa->id_siswa;
+
+        // dd([$validate, $id_siswa]);
+
+        Submission::create([
+            'id_siswa' => $id_siswa,
+            'id_kota' => $validate['id_kota'],
+            'status' => 0,
+        ]);
+
+        $notificaion = array(
+            'message' => "Pengajuan berhasil dikirimkan!",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('pengajuan.index')->with($notificaion);
     }
 
     /**
@@ -63,8 +87,34 @@ class PengajuanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_pengajuan)
     {
-        //
+        // $submission = Submission::findOrFail($id_pengajuan);
+
+        // $submission->delete();
+
+        // Pkl::where('id_siswa', $submission->id_siswa)->delete();
+
+        // $notification = array(
+        //     'message' => "Pengajuan PKL berhasil dibatalkan",
+        //     'alert-type' => 'success'
+        // );
+
+        // return redirect()->route('pengajuan.index')->with($notification);
+    }
+
+    public function verify($id_pengajuan)
+    {
+        $submission = Submission::find($id_pengajuan);
+
+        $submission->status = 1;
+        $submission->save();
+
+        $notification = [
+            'message' => "Pengajuan berhasil diverifikasi!",
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('pengajuan.index')->with($notification);
     }
 }

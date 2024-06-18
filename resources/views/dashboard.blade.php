@@ -33,27 +33,35 @@
 
             @hasrole('kajur')
                 <div class="flex flex-wrap pt-4 gap-4">
-                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white w-64 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
                             <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Guru</h2>
-                            <small>Data guru yang tercatat sebagai pembimbing PKL</small>
+                            <small>Data guru yang terdata sebagai pembimbing PKL</small>
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Mentor::count() }}</p>
                         </div>
                     </div>
 
-                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white w-64 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
                             <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Instansi</h2>
-                            <small>Data instansi yang tercatat sebagai lokasi PKL</small>
+                            <small>Data instansi yang terdata sebagai lokasi tempat PKL</small>
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Instance::count() }}</p>
                         </div>
                     </div>
 
-                    <div class="bg-white w-56 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white w-64 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
                             <h2 class="font-bold text-2xl text-gray-800 leading-tight">Data Siswa/i</h2>
-                            <small>Data siswa/siswi yang tercatat sebagai pelaksana PKL</small>
+                            <small>Data siswa/siswi yang terdata sebagai pelaksana PKL</small>
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Student::count() }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white w-64 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <h2 class="font-bold text-2xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                            <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Submission::where('status', 0)->count() }}</p>
                         </div>
                     </div>
                 </div>

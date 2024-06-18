@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Instance;
 use App\Models\Kota;
 use App\Models\Mentor;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -142,5 +143,19 @@ class InstansiController extends Controller
         );
 
         return redirect()->route('instansi.index')->with($notification);
+    }
+
+    public function getInstansiBySiswa($id_siswa)
+    {
+        $submission = Submission::where('id_siswa', $id_siswa)->first();
+
+        if (!$submission) {
+            return response()->json([]);
+        }
+
+        $id_kota = $submission->id_kota;
+        $instances = Instance::where('id_kota', $id_kota)->get();
+
+        return response()->json($instances);
     }
 }
