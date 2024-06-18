@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('presences', function (Blueprint $table) {
             $table->increments('id_presensi');
             $table->integer('id_siswa')->unsigned();
+            $table->foreign('id_siswa')->references('id_siswa')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal');
             $table->time('waktu');
+            $table->enum('keterangan', ['Hadir', 'Sakit', 'Izin']);
             $table->string('kode_latitude', 50);
             $table->string('kode_longtitude', 50);
             $table->text('jurnal_kegiatan');
-            $table->foreign('id_siswa')->references('id_siswa')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
