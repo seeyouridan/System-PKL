@@ -36,6 +36,12 @@
                             <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
                         </x-nav-link>
                     </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('pengajuan.index')" :active="request()->routeIs('pengajuan.index') || request()->routeIs('pengajuan.create')">
+                            <i class="fa-solid fa-calendar pr-2"></i>{{ __('Pengajuan PKL') }}
+                        </x-nav-link>
+                    </div>
                 @endhasrole
             </div>
 
