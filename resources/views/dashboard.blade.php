@@ -64,6 +64,14 @@
                             <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Submission::where('status', 0)->count() }}</p>
                         </div>
                     </div>
+                    
+                    <div class="bg-white w-64 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <h2 class="font-bold text-2xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+                            <small>Data pengajuan siswa/siswi yang sudah dikonfirmasi</small>
+                            <p class="font-extrabold text-4xl text-right pt-2">{{ App\Models\Submission::where('status', 1)->count() }}</p>
+                        </div>
+                    </div>
                 </div>
             @endhasrole
 

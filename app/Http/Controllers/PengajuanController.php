@@ -52,12 +52,12 @@ class PengajuanController extends Controller
             'status' => 0,
         ]);
 
-        $notificaion = array(
+        $notification = array(
             'message' => "Pengajuan berhasil dikirimkan!",
             'alert-type' => 'success'
         );
 
-        return redirect()->route('pengajuan.index')->with($notificaion);
+        return redirect()->route('pengajuan.index')->with($notification);
     }
 
     /**
@@ -89,18 +89,25 @@ class PengajuanController extends Controller
      */
     public function destroy(string $id_pengajuan)
     {
-        // $submission = Submission::findOrFail($id_pengajuan);
+        $pengajuan = Submission::find($id_pengajuan);
 
-        // $submission->delete();
+        if ($pengajuan && $pengajuan->status == 0) {
+            $pengajuan->delete();
 
-        // Pkl::where('id_siswa', $submission->id_siswa)->delete();
+            $notification = array(
+                'message' => "Pengajuan berhasil dibatalkan",
+                'alert-type' => 'success'
+            );
 
-        // $notification = array(
-        //     'message' => "Pengajuan PKL berhasil dibatalkan",
-        //     'alert-type' => 'success'
-        // );
+            return redirect()->route('pengajuan.index')->with($notification);
+        }
 
-        // return redirect()->route('pengajuan.index')->with($notification);
+        $notification = array(
+            'message' => "Pengajuan tidak dapat dibatalkan",
+            'alert-type' => 'error'
+        );
+
+        return redirect()->route('pengajuan.index')->with($notification);
     }
 
     public function verify($id_pengajuan)

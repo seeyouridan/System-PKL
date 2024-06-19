@@ -77,9 +77,15 @@
                         <x-input-label for="id_siswa" value="Siswa" />
                         <x-select-input id="id_siswa" name="id_siswa" class="mt-1 block w-full text-black" required>
                             <option value="" selected>Pilih Siswa</option>
+                            
+                            @php
+                                $siswaInPKLs = App\Models\Pkl::pluck('id_siswa')->toArray();
+                            @endphp
+                            
                             @foreach (App\Models\Submission::where('status', 1)->get() as $submission)
-                                <option value="{{ $submission->student->id_siswa }}">{{ $submission->student->nama }}
-                                </option>
+                                @if (!in_array($submission->student->id_siswa, $siswaInPKLs))
+                                    <option value="{{ $submission->student->id_siswa }}">{{ $submission->student->nama }}</option>
+                                @endif
                             @endforeach
                         </x-select-input>
                         <x-input-error class="mt-2" :messages="$errors->get('id_siswa')" />
@@ -89,7 +95,6 @@
                         <x-input-label for="id_instansi" value="Instansi" />
                         <x-select-input id="id_instansi" name="id_instansi" class="mt-1 block w-full text-black" required>
                             <option value="" selected>Pilih Instansi</option>
-                            {{-- Options akan di-generate secara dinamis menggunakan JavaScript --}}
                         </x-select-input>
                         <x-input-error class="mt-2" :messages="$errors->get('id_instansi')" />
                     </div>

@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function student()
     {
-        return $this->hasOne(Student::class, 'id_user'); // Sesuaikan dengan nama kolom yang sesuai di tabel students
+        return $this->hasOne(Student::class, 'id_user', 'id');
     }
 }

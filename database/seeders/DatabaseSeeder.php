@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             MentorSeeder::class,
             InstanceSeeder::class,
             StudentSeeder::class,
+            SubmissionSeeder::class,
+            PklSeeder::class,
         ]);
     }
 }
