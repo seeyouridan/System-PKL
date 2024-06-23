@@ -38,20 +38,20 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        <header class="bg-white shadow">
+            <div class="max-w-screen-2xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
         @endif
 
         <div class="flex">
 
             @if (Auth::user()->hasRole('kajur') || Auth::user()->hasRole('guru'))
-                <!--Sidebar Menu -->
-                <div class="w-96 hidden sm:block">
-                    @include('layouts.sidebar')
-                </div>
+            <!--Sidebar Menu -->
+            <div class="w-96 hidden sm:block">
+                @include('layouts.sidebar')
+            </div>
             @endif
 
             <!-- Page Content -->
