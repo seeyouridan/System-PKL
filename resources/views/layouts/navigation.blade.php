@@ -14,37 +14,65 @@
                 @hasrole('siswa')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Dashboard') }}
+                        <i class="fa-solid fa-dashboard pr-2 text-sm"></i>{{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
-                        <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Data Guru Pembimbing') }}
-                    </x-nav-link>
+                <div class="hidden space-x-8 sm:items-center sm:-my-px sm:ms-10 sm:flex">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <x-nav-link :active="request()->routeIs('guru.index') || request()->routeIs('instansi.index')">
+                                <i class="fa-solid fa-circle-info pr-2 text-sm"></i>{{ __('Informasi') }}
+
+                                <div class="ms-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </x-nav-link>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('guru.index')">
+                                <i class="fa-solid fa-user-graduate pr-2 text-sm"></i>{{ __('Data Guru Pembimbing') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('instansi.index')">
+                                <i class="fa-solid fa-industry pr-2 text-sm"></i>{{ __('Data Instansi') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                        <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
-                    </x-nav-link>
-                </div>
+                <div class="hidden space-x-8 sm:items-center sm:-my-px sm:ms-10 sm:flex">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <x-nav-link :active="request()->routeIs('pengajuan.index') || request()->routeIs('pengajuan.create') || request()->routeIs('pkl.index')">
+                                <i class="fa-solid fa-paper-plane pr-2 text-sm"></i>{{ __('PKL') }}
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('pengajuan.index')" :active="request()->routeIs('pengajuan.index') || request()->routeIs('pengajuan.create')">
-                        <i class="fa-solid fa-paper-plane pr-2"></i></i>{{ __('Pengajuan PKL') }}
-                    </x-nav-link>
-                </div>
+                                <div class="ms-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </x-nav-link>
+                        </x-slot>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('pkl.index')" :active="request()->routeIs('pkl.index')">
-                        <i class="fa-solid fa-map pr-2"></i>{{ __('PKL') }}
-                    </x-nav-link>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('pengajuan.index')">
+                                <i class="fa-solid fa-envelopes-bulk pr-2 text-sm"></i></i>{{ __('Pengajuan PKL') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('pkl.index')">
+                                <i class="fa-solid fa-map pr-2 text-sm"></i>{{ __('Info PKL') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
-                        <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
+                        <i class="fa-solid fa-calendar pr-2 text-sm"></i>{{ __('Presensi') }}
                     </x-nav-link>
                 </div>
                 @endhasrole
@@ -66,9 +94,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
