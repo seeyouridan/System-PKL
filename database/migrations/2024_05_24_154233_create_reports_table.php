@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id_laporan');
-            $table->string('laporan', 255);
-            $table->string('laporan_revisi', 255)->nullable();
-            $table->char('nilai');
+            $table->integer('id_siswa')->unsigned();
+            $table->foreign('id_siswa')->references('id_siswa')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('laporan')->nullable();
+            $table->string('nama_file');
+            $table->string('laporan_revisi')->nullable();
+            $table->string('nama_file_revisi')->nullable();
+            $table->char('nilai')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PklController;
 use App\Http\Controllers\PresensiController;
@@ -79,4 +80,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/pkl', [PklController::class, 'store'])->name('pkl.store');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
+    Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+    Route::get('/laporan/{id_laporan}/edit', [LaporanController::class, 'edit'])->name('laporan.edit');
+    Route::match(['put', 'patch'], '/laporan/{id_laporan}', [LaporanController::class, 'update'])->name('laporan.update');
+    Route::patch('/laporan/{id}/nilai', [LaporanController::class, 'updateNilai'])->name('laporan.updateNilai');
+});
+
+require __DIR__ . '/auth.php';

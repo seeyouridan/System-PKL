@@ -1,7 +1,7 @@
 <x-app-layout>
 
     @include('pengajuan.create')
-    
+
     @foreach ($submissions as $data)
         @include('pengajuan.delete', ['data' => $data])
     @endforeach
@@ -47,7 +47,7 @@
                                         </div><br>
                                         <div>
                                             <i class="fa-solid fa-triangle-exclamation"></i>
-                                                Untuk membatalkan pengajuan yang telah di verifikasi, hubungi pihak jurusan
+                                            Untuk membatalkan pengajuan yang telah di verifikasi, hubungi pihak jurusan
                                             <i class="fa-solid fa-triangle-exclamation"></i>
                                         </div>
                                     @endif

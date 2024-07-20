@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Student extends Model
 {
     use HasFactory;
 
     protected $table = 'students';
-
     protected $primaryKey = 'id_siswa';
 
     protected $fillable = [
@@ -36,5 +36,10 @@ class Student extends Model
     public function mentor(): BelongsTo
     {
         return $this->belongsTo(Mentor::class, 'id_guru', 'id_guru');
+    }
+
+    public function reports(): HasMany
+    {
+        return $this->hasMany(Laporan::class, 'id_siswa');
     }
 }
