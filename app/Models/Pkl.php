@@ -12,6 +12,8 @@ class Pkl extends Model
 
     protected $table = 'pkls';
 
+    protected $primaryKey = 'id_pkl';
+
     protected $fillable = [
         'id_siswa',
         'id_instansi'

@@ -103,8 +103,17 @@ class PklController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_pkl)
     {
-        //
+        $pkl = Pkl::findOrFail($id_pkl);
+
+        $pkl->delete();
+
+        $notification = array(
+            'message' => "Data pkl berhasil dihapus",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('pkl.index')->with($notification);
     }
 }

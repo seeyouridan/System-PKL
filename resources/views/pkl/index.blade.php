@@ -1,6 +1,7 @@
 <x-app-layout>
 
     @include('pkl.create')
+    @include('pkl.delete')
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -44,7 +45,10 @@
                                 <td>{{ $row->instance->mentor->nama_guru }}</td>
                                 @hasrole('kajur')
                                     <td>
-
+                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                            data-bs-target="#hapusModal_{{ $row->id_pkl }}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
                                     </td>
                                 @endhasrole
                             </tr>

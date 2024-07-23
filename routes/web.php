@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pkl', [PklController::class, 'index'])->name('pkl.index');
     Route::get('/pkl/create', [PklController::class, 'create'])->name('pkl.create');
     Route::post('/pkl', [PklController::class, 'store'])->name('pkl.store');
+    Route::delete('/pkl/{id_pkl}', [PklController::class, 'destroy'])->name('pkl.destroy');
 });
 
 Route::middleware('auth')->group(function () {
