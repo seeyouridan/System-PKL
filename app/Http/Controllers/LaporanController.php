@@ -139,9 +139,18 @@ class LaporanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_laporan)
     {
-        //
+        $laporan = Laporan::findOrFail($id_laporan);
+
+        $laporan->delete();
+
+        $notification = array(
+            'message' => "Data laporan berhasil dihapus",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('laporan.index')->with($notification);
     }
 
     public function updateNilai(Request $request, $id_laporan)

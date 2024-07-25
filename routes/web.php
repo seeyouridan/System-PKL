@@ -88,6 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan/{id_laporan}/edit', [LaporanController::class, 'edit'])->name('laporan.edit');
     Route::match(['put', 'patch'], '/laporan/{id_laporan}', [LaporanController::class, 'update'])->name('laporan.update');
     Route::patch('/laporan/{id}/nilai', [LaporanController::class, 'updateNilai'])->name('laporan.updateNilai');
+    Route::delete('/laporan/{id_laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
 });
 
 require __DIR__ . '/auth.php';

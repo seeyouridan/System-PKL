@@ -2,6 +2,7 @@
     @include('laporan.create')
     @include('laporan.edit')
     @include('laporan.addNilai')
+    @include('laporan.delete')
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -131,7 +132,13 @@
                                                 </button>
                                             </div>
                                         @else
-                                            <span class="badge badge-success">Selesai!</span>
+                                            <div>
+                                                <button tag="a" type="button" class="btn btn-outline-danger"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#hapusModal_{{ $data->id_laporan }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
                                         @endif
                                     @endif
                                 </td>
