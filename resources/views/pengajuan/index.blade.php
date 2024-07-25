@@ -99,7 +99,14 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="btn btn-primary">Verifikasi</button>
+                                                <button type="submit" class="btn btn-outline-primary">Verifikasi</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('pengajuan.unverify', $data->id_pengajuan) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-outline-primary">Unverifikasi</button>
                                             </form>
                                         @endif
                                     </td>

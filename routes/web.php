@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
     Route::patch('/pengajuan/{id}/verifikasi', [PengajuanController::class, 'verify'])->name('pengajuan.verify');
+    Route::patch('/pengajuan/{id}/unverifikasi', [PengajuanController::class, 'unverify'])->name('pengajuan.unverify');
     Route::delete('/pengajuan/{id_pengajuan}', [PengajuanController::class, 'destroy'])->name('pengajuan.destroy');
 });
 

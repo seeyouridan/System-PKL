@@ -124,4 +124,19 @@ class PengajuanController extends Controller
 
         return redirect()->route('pengajuan.index')->with($notification);
     }
+
+    public function unverify($id_pengajuan)
+    {
+        $submission = Submission::find($id_pengajuan);
+
+        $submission->status = 0;
+        $submission->save();
+
+        $notification = [
+            'message' => "Pengajuan berhasil diunverifikasi!",
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('pengajuan.index')->with($notification);
+    }
 }
