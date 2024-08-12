@@ -64,6 +64,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi.index');
+    Route::get('/presensi/create', [PresensiController::class, 'create'])->name('presensi.create');
+    Route::post('/presensi', [PresensiController::class, 'store'])->name('presensi.store');
 });
 
 Route::middleware('auth')->group(function () {

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kode_latitude', 50);
             $table->string('kode_longtitude', 50);
             $table->text('jurnal_kegiatan');
+            $table->enum('status', ['Tepat Waktu', 'Telat', 'Tidak Hadir']);
             $table->timestamps();
         });
     }
