@@ -19,7 +19,7 @@ return new class extends Migration
             $table->time('waktu');
             $table->enum('keterangan', ['Hadir', 'Sakit', 'Izin']);
             $table->string('kode_latitude', 50);
-            $table->string('kode_longtitude', 50);
+            $table->string('kode_longitude', 50);
             $table->text('jurnal_kegiatan');
             $table->enum('status', ['Tepat Waktu', 'Telat', 'Tidak Hadir']);
             $table->timestamps();
