@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Presence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
 
 class PresensiController extends Controller
 {
@@ -43,28 +44,21 @@ class PresensiController extends Controller
         $id_siswa = $user->student->id_siswa;
         $nama_siswa = $user->student->nama;
 
-        $tanggal = Carbon::now()->format('Y-m-d');
-        $waktu = Carbon::now('Asia/Jakarta')->format('H:i:s');
+        $tanggal = date('Y-m-d');
+        $waktu = date('H:i:s', time());
 
-        if (Carbon::now('Asia/Jakarta')->between(
-            Carbon::createFromTimeString('08:00:00', 'Asia/Jakarta'),
-            Carbon::createFromTimeString('08:30:00', 'Asia/Jakarta')
-        )) {
-            $status = 'Tepat Waktu';
-        } elseif (Carbon::now('Asia/Jakarta')->between(
-            Carbon::createFromTimeString('08:31:00', 'Asia/Jakarta'),
-            Carbon::createFromTimeString('12:00:00', 'Asia/Jakarta')
-        )) {
+        $now = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
+        $jamMasuk = new DateTime('08:00:00', new DateTimeZone('Asia/Jakarta'));
+        $batasTelat = new DateTime('08:30:00', new DateTimeZone('Asia/Jakarta'));
+        $batasTidakHadir = new DateTime('15:00:00', new DateTimeZone('Asia/Jakarta'));
+
+        if ($now > $jamMasuk && $now < $batasTelat) {
+            $status = 'Masuk';
+        } elseif ($now > $batasTelat && $now < $batasTidakHadir) {
             $status = 'Telat';
+        } else {
+            $status = 'Tidak Hadir';
         }
-        // elseif (Carbon::now('Asia/Jakarta')->between(
-        //     Carbon::createFromTimeString('12:00:01', 'Asia/Jakarta'),
-        //     Carbon::createFromTimeString('07:59:00', 'Asia/Jakarta')
-        // )) {
-        //     $status = 'Tidak Hadir';
-        // } else {
-        //     $status = 'Tidak Hadir';
-        // }
 
         // dd([$validate, $id_siswa, $nama_siswa, $tanggal, $waktu, $status]);
 

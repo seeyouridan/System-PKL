@@ -22,6 +22,7 @@ class Presence extends Model
         "kode_longitude",
         "jurnal_kegiatan",
         "keterangan",
+        "status",
     ];
 
     public function siswa(): BelongsTo
