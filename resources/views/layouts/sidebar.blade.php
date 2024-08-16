@@ -53,9 +53,15 @@
                 </x-nav-link>
             </div>
 
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('laporan.index')" :active="request()->routeIs('laporan.index')">
-                    <i class="fa-solid fa-book-open pr-2 text-sm"></i>{{ __('Laporan') }}
+                    <i class="fa-solid fa-book-open pr-2"></i>{{ __('Laporan') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
+                    <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Rekap Absensi') }}
                 </x-nav-link>
             </div>
         @endhasrole

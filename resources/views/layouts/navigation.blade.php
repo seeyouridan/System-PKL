@@ -183,7 +183,7 @@
                     <i class="fa-solid fa-map pr-2"></i>{{ __('PKL') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
-                    <i class="fa-solid fa-calendar pr-2"></i>{{ __('Presensi') }}
+                    <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Presensi') }}
                 </x-responsive-nav-link>
             @endhasrole
 
@@ -193,6 +193,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
                     <i class="fa-solid fa-users pr-2"></i>{{ __('Data Siswa') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
+                    <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Presensi') }}
                 </x-responsive-nav-link>
             @endhasrole
         </div>

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use DateTime;
 use DateTimeZone;
 
+use function Laravel\Prompts\alert;
+
 class PresensiController extends Controller
 {
     /**
@@ -46,6 +48,19 @@ class PresensiController extends Controller
 
         $tanggal = date('Y-m-d');
         $waktu = date('H:i:s', time());
+
+        $absensiHariIni = Presence::where('id_siswa', $id_siswa)
+            ->where('tanggal', $tanggal)
+            ->first();
+
+        if ($absensiHariIni) {
+            $notification = array(
+                'message' => "Anda sudah mengisi absen hari ini!",
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('dashboard');
+        }
 
         $now = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
         $jamMasuk = new DateTime('08:00:00', new DateTimeZone('Asia/Jakarta'));
