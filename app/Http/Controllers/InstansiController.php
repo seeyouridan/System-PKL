@@ -8,6 +8,7 @@ use App\Models\Kota;
 use App\Models\Mentor;
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InstansiController extends Controller
@@ -17,8 +18,26 @@ class InstansiController extends Controller
      */
     public function index()
     {
-        $data['instances'] = Instance::with('kota')->get();
-        return view('instansi.index', $data);
+        if (Auth::check()) {
+            foreach (Auth::user()->roles as $role) {
+                if ($role->name == 'guru') {
+                    $userId = Auth::id();
+
+                    $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+
+                    if ($mentor) {
+                        $instances = Instance::where('id_guru', $mentor->id_guru)->with('kota')->get();
+                    } else {
+                        $instances = collect();
+                    }
+
+                    return view('instansi.index', ['instances' => $instances]);
+                } else {
+                    $data['instances'] = Instance::with('kota')->get();
+                    return view('instansi.index', $data);
+                }
+            }
+        }
     }
 
     /**

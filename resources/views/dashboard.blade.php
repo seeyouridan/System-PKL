@@ -43,7 +43,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Guru</h2>
-                            <small>Jumlah data guru yang terdata sebagai pembimbing PKL</small>
+                            <small>Data guru yang terdata sebagai pembimbing PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Mentor::count() }}</p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
-                            <small>Jumlah data instansi yang terdata sebagai lokasi tempat PKL</small>
+                            <small>Data instansi yang terdata sebagai lokasi tempat PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Instance::count() }}</p>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
-                            <small>Jumlah data siswa/siswi yang terdata sebagai pelaksana PKL</small>
+                            <small>Data siswa/siswi yang terdata sebagai pelaksana PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Student::count() }}</p>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
-                            <small>Jumlah data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
                                 {{ App\Models\Submission::where('status', 0)->count() }}</p>
                         </div>
@@ -76,7 +76,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Konfirmasi PKL</h2>
-                            <small>Jumlah data pengajuan siswa/siswi yang sudah dikonfirmasi</small>
+                            <small>Data pengajuan siswa/siswi yang sudah dikonfirmasi</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
                                 {{ App\Models\Submission::where('status', 1)->count() }}</p>
                         </div>
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="border-1 border-white rounded-lg py-4 pr-4 bg-white shadow-sm">
-                        <canvas id="myChart" style="height: 250px;"></canvas>
+                        <canvas id="chartKjr" style="height: 250px;"></canvas>
                     </div>
                 </div>
             @endhasrole
@@ -117,6 +117,15 @@
                     } else {
                         $jumlahSiswa = 0;
                     }
+
+                    $laki_laki = DB::table('students')
+                        ->where('jenis_kelamin', 'L')
+                        ->where('id_guru', $mentorId)
+                        ->count();
+                    $perempuan = DB::table('students')
+                        ->where('jenis_kelamin', 'P')
+                        ->where('id_guru', $mentorId)
+                        ->count();
                 @endphp
 
                 <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
@@ -151,48 +160,93 @@
     </div>
 </x-app-layout>
 
-@php
-    $laki_laki = DB::table('students')->where('jenis_kelamin', 'L')->where('id_guru', $mentorId)->count();
-    $perempuan = DB::table('students')->where('jenis_kelamin', 'P')->where('id_guru', $mentorId)->count();
-@endphp
+@hasrole('kajur')
+    @php
+        $laki_laki = DB::table('students')->where('jenis_kelamin', 'L')->count();
+        $perempuan = DB::table('students')->where('jenis_kelamin', 'P')->count();
+    @endphp
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('myChart');
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const kjr = document.getElementById('chartKjr');
 
-    const myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Laki-Laki', 'Perempuan'],
-            datasets: [{
-                label: ' Jumlah Siswa ',
-                data: [{{ $laki_laki }}, {{ $perempuan }}],
-                backgroundColor: ['#2e31ff', '#ff2e5b'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Data Siswa PKL Berdasarkan Jenis Kelamin',
-                    font: {
-                        size: 18,
-                        weight: 'bold',
+        const chartKjr = new Chart(kjr, {
+            type: 'pie',
+            data: {
+                labels: ['Laki-Laki', 'Perempuan'],
+                datasets: [{
+                    label: ' Jumlah Siswa ',
+                    data: [{{ $laki_laki }}, {{ $perempuan }}],
+                    backgroundColor: ['#2e31ff', '#ff2e5b'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Data Siswa PKL Berdasarkan Jenis Kelamin',
+                        font: {
+                            size: 18,
+                            weight: 'bold',
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        },
+                        align: 'center',
                     },
-                    padding: {
-                        top: 10,
-                        bottom: 30
-                    },
-                    align: 'center',
-                },
 
-                legend: {
-                    position: 'right',
+                    legend: {
+                        position: 'right',
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+@endhasrole
+
+@hasrole('guru')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Laki-Laki', 'Perempuan'],
+                datasets: [{
+                    label: ' Jumlah Siswa ',
+                    data: [{{ $laki_laki }}, {{ $perempuan }}],
+                    backgroundColor: ['#2e31ff', '#ff2e5b'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Data Siswa PKL Berdasarkan Jenis Kelamin',
+                        font: {
+                            size: 18,
+                            weight: 'bold',
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        },
+                        align: 'center',
+                    },
+
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+    </script>
+@endhasrole

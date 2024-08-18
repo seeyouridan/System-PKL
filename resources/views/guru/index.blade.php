@@ -7,7 +7,11 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Kelola Instansi') }}
+            @if (Auth::user()->hasRole('siswa'))
+                {{ __('Data Guru') }}
+            @elseif (Auth::user()->hasRole('kajur'))
+                {{ __('Kelola Guru') }}
+            @endif
         </h2>
     </x-slot>
 

@@ -3,11 +3,14 @@
     @include('siswa.create')
     @include('siswa.edit')
     @include('siswa.delete')
-    {{-- @include('siswa.open') --}}
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Kelola Siswa') }}
+            @if (Auth::user()->hasRole('guru'))
+                {{ __('Data Siswa') }}
+            @elseif (Auth::user()->hasRole('kajur'))
+                {{ __('Kelola Siswa') }}
+            @endif
         </h2>
     </x-slot>
 
@@ -56,11 +59,6 @@
                                     <td>{{ $data->major->nama_jurusan }}</td>
                                     @hasrole('kajur')
                                         <td>
-                                            {{-- <button tag="a" type="button" class="btn btn-outline-success"
-                                            data-bs-toggle="modal" data-bs-target="#openModel_{{ $data->id_siswa }}">
-                                            <i class="fa-solid fa-folder"></i>
-                                        </button> --}}
-
                                             <button tag="a" type="button" class="btn btn-outline-warning"
                                                 data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id_siswa }}">
                                                 <i class="fa-solid fa-pencil"></i>
