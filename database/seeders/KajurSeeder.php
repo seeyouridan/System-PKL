@@ -20,11 +20,10 @@ class KajurSeeder extends Seeder
             'name' => 'kajur',
             'guard_name' => 'web'
         ]);
-        
+
         $data = [
             [
                 'username' => 'wawan@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '19681130 199801 1 002',
                 'nama_guru' => 'Wawan Syamsul Rizal, S.Pd',
                 'jenis_kelamin' => 'L',
@@ -36,9 +35,9 @@ class KajurSeeder extends Seeder
             $user = User::create([
                 'name' => $item['nama_guru'],
                 'username' => $item['username'],
-                'password' => $item['password'],
+                'password' => Hash::make('kajurdpib2024'),
             ]);
-            
+
             DB::table('mentors')->insert([
                 [
                     'nip_guru' => $item['nip_guru'],

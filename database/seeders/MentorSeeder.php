@@ -24,7 +24,6 @@ class MentorSeeder extends Seeder
         $data = [
             [
                 'username' => 'dessi@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '4733753654230092',
                 'nama_guru' => 'Dessi Andriani, S. T.',
                 'jenis_kelamin' => 'P',
@@ -33,34 +32,31 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'kani@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '-',
                 'nama_guru' => 'Kani Muthmainnah, S. T., M. Ars.',
                 'jenis_kelamin' => 'P',
                 'no_telp' => '085863286663',
             ],
 
+            [
+                'username' => 'anggi@gmail.com',
+                'nip_guru' => '-',
+                'nama_guru' => 'Moch. Anggi Kusumah, S. Pd.',
+                'jenis_kelamin' => 'L',
+                'no_telp' => '085723212904',
+            ],
+
             // [
-            //     'username' => 'anggi@gmail.com',
-            //     'password' => Hash::make('Password123'),
+            //     'username' => 'ikmal@gmail.com',
+
             //     'nip_guru' => '-',
-            //     'nama_guru' => 'Moch. Anggi Kusumah, S. Pd.',
+            //     'nama_guru' => 'Ikmal Bahrul Alam, S. Pd.',
             //     'jenis_kelamin' => 'L',
-            //     'no_telp' => '085723212904',
+            //     'no_telp' => '0835341158194',
             // ],
 
             [
-                'username' => 'ikmal@gmail.com',
-                'password' => Hash::make('Password123'),
-                'nip_guru' => '-',
-                'nama_guru' => 'Ikmal Bahrul Alam, S. Pd.',
-                'jenis_kelamin' => 'L',
-                'no_telp' => '0835341158194',
-            ],
-
-            [
                 'username' => 'luki@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '-',
                 'nama_guru' => 'R. Luki Muharam, S. ST.',
                 'jenis_kelamin' => 'L',
@@ -69,7 +65,6 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'sri@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '-',
                 'nama_guru' => 'Sri Mulyani, S. Pd.',
                 'jenis_kelamin' => 'P',
@@ -78,7 +73,6 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'tatang@gmail.com',
-                'password' => Hash::make('Password123'),
                 'nip_guru' => '-',
                 'nama_guru' => 'Tatang Sudrajat, S. Pd.',
                 'jenis_kelamin' => 'L',
@@ -90,9 +84,9 @@ class MentorSeeder extends Seeder
             $user = User::create([
                 'name' => $item['nama_guru'],
                 'username' => $item['username'],
-                'password' => $item['password'],
+                'password' => Hash::make('mentordpib123'),
             ]);
-            
+
             DB::table('mentors')->insert([
                 [
                     'nip_guru' => $item['nip_guru'],
