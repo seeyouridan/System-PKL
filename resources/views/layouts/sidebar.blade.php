@@ -11,7 +11,7 @@
         @hasrole('kajur')
             <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index') || request()->routeIs('guru.create')">
-                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Kelola Guru Pembimbing') }}
+                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Kelola Pembimbing') }}
                 </x-nav-link>
             </div>
 

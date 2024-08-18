@@ -153,7 +153,7 @@
 
             @hasrole('kajur')
                 <x-responsive-nav-link :href="route('guru.index')" :active="request()->routeIs('guru.index')">
-                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Kelola Guru Pembimbing') }}
+                    <i class="fa-solid fa-user-graduate pr-2"></i>{{ __('Kelola Pembimbing') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
                     <i class="fa-solid fa-industry pr-2"></i>{{ __('Kelola Instansi') }}
@@ -208,10 +208,6 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
