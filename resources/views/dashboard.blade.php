@@ -43,7 +43,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Guru</h2>
-                            <small>Data guru yang terdata sebagai pembimbing PKL</small>
+                            <small>Jumlah data guru yang terdata sebagai pembimbing PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Mentor::count() }}</p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
-                            <small>Data instansi yang terdata sebagai lokasi tempat PKL</small>
+                            <small>Jumlah data instansi yang terdata sebagai lokasi tempat PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Instance::count() }}</p>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
-                            <small>Data siswa/siswi yang terdata sebagai pelaksana PKL</small>
+                            <small>Jumlah data siswa/siswi yang terdata sebagai pelaksana PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">{{ App\Models\Student::count() }}</p>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
-                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                            <small>Jumlah data pengajuan siswa/siswi yang belum dikonfirmasi</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
                                 {{ App\Models\Submission::where('status', 0)->count() }}</p>
                         </div>
@@ -76,7 +76,7 @@
                     <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Konfirmasi PKL</h2>
-                            <small>Data pengajuan siswa/siswi yang sudah dikonfirmasi</small>
+                            <small>Jumlah data pengajuan siswa/siswi yang sudah dikonfirmasi</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
                                 {{ App\Models\Submission::where('status', 1)->count() }}</p>
                         </div>
@@ -98,13 +98,62 @@
                 </div>
             @endhasrole
 
+            @hasrole('guru')
+                <style>
+                    @media (min-width: 640px) {
+                        .responsive-margin>div {
+                            margin: 0 !important;
+                        }
+                    }
+                </style>
+
+                @php
+                    $userId = Auth::id();
+                    $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+
+                    if ($mentor) {
+                        $mentorId = $mentor->id_guru;
+                        $jumlahSiswa = \App\Models\Student::where('id_guru', $mentorId)->count();
+                    } else {
+                        $jumlahSiswa = 0;
+                    }
+                @endphp
+
+                <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
+                            <small>Jumlah data instansi yang dibawah bimbingan</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ App\Models\Instance::where('id_guru', $mentorId)->count() }}</p>
+                        </div>
+                    </div>
+
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
+                            <small>Jumlah data siswa/siswi yang dibawah bimbingan</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ $jumlahSiswa }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 pt-10 max-w-7xl">
+                    <div class="border-1 pt-10 border-white rounded-lg py-4 pr-4 bg-white shadow-sm">
+                        <canvas id="myChart" style="width: 500px; height: 250px;"></canvas>
+                    </div>
+                </div>
+            @endhasrole
+
         </div>
     </div>
 </x-app-layout>
 
 @php
-    $laki_laki = DB::table('students')->where('jenis_kelamin', 'L')->count();
-    $perempuan = DB::table('students')->where('jenis_kelamin', 'P')->count();
+    $laki_laki = DB::table('students')->where('jenis_kelamin', 'L')->where('id_guru', $mentorId)->count();
+    $perempuan = DB::table('students')->where('jenis_kelamin', 'P')->where('id_guru', $mentorId)->count();
 @endphp
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
