@@ -118,6 +118,9 @@
                         $jumlahSiswa = 0;
                     }
 
+                    $siswaId = \App\Models\Student::where('id_guru', $mentorId)->pluck('id_siswa');
+                    $jumlahSiswaLaporan = \App\Models\Laporan::whereIn('id_siswa', $siswaId)->count();
+
                     $laki_laki = DB::table('students')
                         ->where('jenis_kelamin', 'L')
                         ->where('id_guru', $mentorId)
@@ -147,11 +150,62 @@
                             </p>
                         </div>
                     </div>
+
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
+                            <small>Jumlah siswa/siswi yang sudah mengumpulkan laporan PKL</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ $jumlahSiswaLaporan }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex flex-wrap gap-4 pt-10 max-w-7xl">
                     <div class="border-1 pt-10 border-white rounded-lg py-4 pr-4 bg-white shadow-sm">
                         <canvas id="myChart" style="width: 500px; height: 250px;"></canvas>
+                    </div>
+                </div>
+            @endhasrole
+
+            @hasrole('siswa')
+                <style>
+                    @media (min-width: 640px) {
+                        .responsive-margin>div {
+                            margin: 0 !important;
+                        }
+                    }
+                </style>
+
+                <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
+                            <small>Jumlah data instansi yang dibawah bimbingan</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ App\Models\Instance::where('id_guru', $mentorId)->count() }}</p>
+                        </div>
+                    </div>
+
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
+                            <small>Jumlah data siswa/siswi yang dibawah bimbingan</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ $jumlahSiswa }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
+                            <small>Jumlah siswa/siswi yang sudah mengumpulkan laporan PKL</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ $jumlahSiswaLaporan }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             @endhasrole
