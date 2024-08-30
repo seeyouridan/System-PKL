@@ -42,7 +42,15 @@
                         @foreach ($mentors as $data)
                             <tr>
                                 <td>{{ $num++ }}</td>
-                                <td>{{ $data->nip_guru }}</td>
+                                <td>
+                                    @if ($data->nip_guru == null)
+                                        <i>
+                                            Tidak Diketahui
+                                        </i>
+                                    @elseif ($data->nip_guru == !null)
+                                        {{ $data->nip_guru }}
+                                    @endif
+                                </td>
                                 <td>{{ $data->nama_guru }}</td>
                                 <td>{{ $data->no_telp }}</td>
                                 <td>

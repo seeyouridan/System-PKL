@@ -11,12 +11,27 @@
                 <div class="modal-body">
 
                     <div class="flex">
-                        <div class="w-48">
+                        <div class="w-52">
                             <div class="font-bold">
                                 <label>NIP / NUPTK</label>
                             </div>
                             <div>
-                                <p>{{ $mentor->nip_guru }}</p>
+                                @if ($mentor->nip_guru == null)
+                                    <i>
+                                        Tidak Diketahui
+                                    </i>
+                                @elseif ($mentor->nip_guru == !null)
+                                    <p>{{ $mentor->nip_guru }}</p>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="flex-auto">
+                            <div class="font-bold">
+                                <label>Nama</label>
+                            </div>
+                            <div>
+                                <p>{{ $mentor->nama_guru }}</p>
                             </div>
                         </div>
                     </div>
@@ -35,7 +50,7 @@
                             </div>
                         @endhasrole
 
-                        <div class="w-52">
+                        <div class="w-56">
                             <div class="font-bold">
                                 <label>Peran</label>
                             </div>
@@ -54,15 +69,6 @@
 
                         <div class="flex-auto">
                             <div class="font-bold">
-                                <label>Nama</label>
-                            </div>
-                            <div>
-                                <p>{{ $mentor->nama_guru }}</p>
-                            </div>
-                        </div>
-
-                        <div class="flex-auto">
-                            <div class="font-bold">
                                 <label>Jenis Kelamin</label>
                             </div>
                             <div>
@@ -76,11 +82,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="modal-footer">
-                        <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
-                    </div>
-
+                </div>
+                <div class="modal-footer">
+                    <x-secondary-button tag="a" data-bs-dismiss="modal">Close</x-secondary-button>
                 </div>
             </div>
         </div>
