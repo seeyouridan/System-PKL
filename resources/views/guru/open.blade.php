@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="flex">
+                    <div class="sm:flex block">
                         <div class="w-52">
                             <div class="font-bold">
                                 <label>NIP / NUPTK</label>
@@ -38,7 +38,7 @@
 
                     <br>
 
-                    <div class="flex">
+                    <div class="sm:flex block">
                         @hasrole('kajur')
                             <div class="w-52">
                                 <div class="font-bold">
@@ -60,7 +60,7 @@
                                         @if ($role->name === 'kajur')
                                             {{ 'Ketua Jurusan' }}
                                         @elseif ($role->name === 'guru')
-                                            {{ 'Guru Pembimbing' }}
+                                            {{ 'Pembimbing' }}
                                         @endif
                                     @endforeach
                                 </p>
