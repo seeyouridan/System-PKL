@@ -11,16 +11,14 @@
                 <div class="modal-body">
 
                     <div class="flex">
-                        @if (Auth::user()->hasRole('kajur') || Auth::user()->hasRole('guru'))
-                            <div class="flex-auto">
-                                <div class="font-bold">
-                                    <label>Kode Instansi</label>
-                                </div>
-                                <div>
-                                    <p>{{ $instansi->kode_instansi }}</p>
-                                </div>
+                        <div class="flex-auto">
+                            <div class="font-bold">
+                                <label>Kode Instansi</label>
                             </div>
-                        @endif
+                            <div>
+                                <p>{{ $instansi->kode_instansi }}</p>
+                            </div>
+                        </div>
 
                         <div class="flex-auto">
                             <div class="font-bold">
