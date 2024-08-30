@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="pt-4">
+    <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -231,7 +231,8 @@
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
                             <small>Jumlah data instansi yang dibawah bimbingan</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
-                                {{ App\Models\Instance::where('id_guru', $mentorId)->count() }}</p>
+                                1
+                            </p>
                         </div>
                     </div>
 
@@ -240,7 +241,7 @@
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
                             <small>Jumlah data siswa/siswi yang dibawah bimbingan</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
-                                {{ $jumlahSiswa }}
+                                2
                             </p>
                         </div>
                     </div>
@@ -250,7 +251,7 @@
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
                             <small>Jumlah siswa/siswi yang sudah mengumpulkan laporan PKL</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
-                                {{ $jumlahSiswaLaporan }}
+                                3
                             </p>
                         </div>
                     </div>

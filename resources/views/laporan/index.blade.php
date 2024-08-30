@@ -127,7 +127,7 @@
                                             </div>
                                         @endif
                                     @elseif (Auth::user()->hasRole('siswa'))
-                                        @if ($data->laporan_revisi == null && $data->niliai == null)
+                                        @if ($data->nilai == null)
                                             <div>
                                                 <button tag="a" type="button" class="btn btn-outline-warning"
                                                     data-bs-toggle="modal"
