@@ -32,6 +32,7 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'kani@gmail.com',
+                'nip_guru' => '',
                 'nama_guru' => 'Kani Muthmainnah, S. T., M. Ars.',
                 'jenis_kelamin' => 'P',
                 'no_telp' => '085863286663',
@@ -39,6 +40,7 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'anggi@gmail.com',
+                'nip_guru' => '',
                 'nama_guru' => 'Moch. Anggi Kusumah, S. Pd.',
                 'jenis_kelamin' => 'L',
                 'no_telp' => '085723212904',
@@ -46,6 +48,7 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'luki@gmail.com',
+                'nip_guru' => '',
                 'nama_guru' => 'R. Luki Muharam, S. ST.',
                 'jenis_kelamin' => 'L',
                 'no_telp' => '081912748722',
@@ -53,6 +56,7 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'sri@gmail.com',
+                'nip_guru' => '',
                 'nama_guru' => 'Sri Mulyani, S. Pd.',
                 'jenis_kelamin' => 'P',
                 'no_telp' => '087794477734',
@@ -60,6 +64,7 @@ class MentorSeeder extends Seeder
 
             [
                 'username' => 'tatang@gmail.com',
+                'nip_guru' => '',
                 'nama_guru' => 'Tatang Sudrajat, S. Pd.',
                 'jenis_kelamin' => 'L',
                 'no_telp' => '081912219430',
@@ -76,6 +81,7 @@ class MentorSeeder extends Seeder
             DB::table('mentors')->insert([
                 [
                     'nama_guru' => $item['nama_guru'],
+                    'nip_guru' => $item['nip_guru'],
                     'jenis_kelamin' => $item['jenis_kelamin'],
                     'no_telp' => $item['no_telp'],
                     'id_user' => $user->id,

@@ -150,16 +150,15 @@
                     }
 
                     $siswaId = \App\Models\Student::where('id_guru', $mentorId)->pluck('id_siswa');
-                    $jumlahSiswaLaporan = \App\Models\Laporan::whereIn('id_siswa', $siswaId)->count();
+                    $laporanSudahNilai = \App\Models\Laporan::whereIn('id_siswa', $siswaId)
+                        ->whereNotNull('nilai')
+                        ->count();
+                    $laporanBelumNilai = \App\Models\Laporan::whereIn('id_siswa', $siswaId)
+                        ->where('nilai', null)
+                        ->count();
 
-                    $laki_laki = DB::table('students')
-                        ->where('jenis_kelamin', 'L')
-                        ->where('id_guru', $mentorId)
-                        ->count();
-                    $perempuan = DB::table('students')
-                        ->where('jenis_kelamin', 'P')
-                        ->where('id_guru', $mentorId)
-                        ->count();
+                    $dpib1 = DB::table('students')->where('id_jurusan', '1')->where('id_guru', $mentorId)->count();
+                    $dpib2 = DB::table('students')->where('id_jurusan', '2')->where('id_guru', $mentorId)->count();
                 @endphp
 
                 <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
@@ -198,9 +197,24 @@
                             <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
 
                             <hr style="height: 1px; background-color: black;" class="rounded">
-                            <small>Jumlah siswa/siswi yang sudah mengumpulkan laporan PKL</small>
+                            <small>Jumlah laporan PKL siswa/siswi yang belum diperiksa</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
-                                {{ $jumlahSiswaLaporan }}
+                                {{ $laporanBelumNilai }}
+                            </p>
+
+                            <hr style="height: 1px; background-color: black;" class="rounded">
+                            <a href="{{ route('laporan.index') }}" class="text-gray-500">Lihat Data Laporan ></a>
+                        </div>
+                    </div>
+
+                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
+
+                            <hr style="height: 1px; background-color: black;" class="rounded">
+                            <small>Jumlah laporan PKL siswa/siswi yang sudah diperiksa</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                {{ $laporanSudahNilai }}
                             </p>
 
                             <hr style="height: 1px; background-color: black;" class="rounded">
@@ -281,8 +295,8 @@
 
 @hasrole('kajur')
     @php
-        $laki_laki = DB::table('students')->where('jenis_kelamin', 'L')->count();
-        $perempuan = DB::table('students')->where('jenis_kelamin', 'P')->count();
+        $dpib1 = DB::table('students')->where('id_jurusan', '1')->count();
+        $dpib2 = DB::table('students')->where('id_jurusan', '2')->count();
     @endphp
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -292,10 +306,10 @@
         const chartKjr = new Chart(kjr, {
             type: 'pie',
             data: {
-                labels: ['Laki-Laki', 'Perempuan'],
+                labels: ['DPIB1', 'DPIB2'],
                 datasets: [{
-                    label: ' Jumlah Siswa ',
-                    data: [{{ $laki_laki }}, {{ $perempuan }}],
+                    label: ' Perbandingan Jurusan ',
+                    data: [{{ $dpib1 }}, {{ $dpib2 }}],
                     backgroundColor: ['#2e31ff', '#ff2e5b'],
                     borderWidth: 1
                 }]
@@ -306,7 +320,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Data Siswa PKL Berdasarkan Jenis Kelamin',
+                        text: 'Data Siswa PKL Berdasarkan Jurusan',
                         font: {
                             size: 18,
                             weight: 'bold',
@@ -335,10 +349,10 @@
         const myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Laki-Laki', 'Perempuan'],
+                labels: ['DPIB1', 'DPIB2'],
                 datasets: [{
-                    label: ' Jumlah Siswa ',
-                    data: [{{ $laki_laki }}, {{ $perempuan }}],
+                    label: ' Perbandingan Jurusan ',
+                    data: [{{ $dpib1 }}, {{ $dpib2 }}],
                     backgroundColor: ['#2e31ff', '#ff2e5b'],
                     borderWidth: 1
                 }]
@@ -349,7 +363,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Data Siswa PKL Berdasarkan Jenis Kelamin',
+                        text: 'Data Siswa PKL Berdasarkan Jurusan',
                         font: {
                             size: 18,
                             weight: 'bold',
