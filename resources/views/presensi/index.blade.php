@@ -47,22 +47,27 @@
             @endphp
 
             @hasrole('siswa')
-                <div class="card-header">
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                        {{ __('Presensi Siswa PKL') }}
-                    </h2>
-                </div>
-
-                <br>
-
                 @if (Auth::check())
                     @php
                         $userId = Auth::id();
                         $student = \App\Models\Student::where('id_user', $userId)->first();
-                        $studentPresence = \App\Models\Presence::where('id_siswa', $student->id_siswa)->first();
+                        $studentPresence = \App\Models\Presence::where('id_siswa', $student->id_siswa)
+                            ->where('tanggal', now()->format('Y-m-d'))
+                            ->first();
                     @endphp
 
                     @if ($studentPresence != null)
+                        <div class="alert alert-danger" role="alert">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                {{ __('Presensi Siswa PKL') }}
+                            </h2>
+                            <p>
+                                Pengisian absensi dilakukan di tempat atau lokasi PKL masing-masing. <br>
+                                <i class="fa-solid fa-clock p-2"></i>08.00 - 08.30 = Hadir <br>
+                                <i class="fa-solid fa-clock p-2"></i>08.31 - 12.00 = Telat <br>
+                                <i class="fa-solid fa-clock p-2"></i>12.01 - selesai = Tidak Hadir <br>
+                            </p>
+                        </div>
                         <div class="alert alert-success" role="alert">
                             <div class="absensi-layer text-center">
                                 <span class="icon-check">&#10003;</span>
@@ -74,6 +79,9 @@
                         </div>
                     @elseif ($studentPresence == null)
                         <div class="alert alert-danger" role="alert">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                {{ __('Presensi Siswa PKL') }}
+                            </h2>
                             <p>
                                 Pengisian absensi dilakukan di tempat atau lokasi PKL masing-masing. <br>
                                 <i class="fa-solid fa-clock p-2"></i>08.00 - 08.30 = Hadir <br>
@@ -210,40 +218,6 @@
                                             echo "<td class='border-1 py-1 px-2 text-white'>$cek</td>";
                                         }
                                     @endphp
-
-                                    {{-- 
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                    <td class="py-1 px-2 border-1"></td>
-                                     --}}
                                 </tr>
                             </tbody>
                         </table>
