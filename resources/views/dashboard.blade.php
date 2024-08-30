@@ -226,35 +226,52 @@
                 </style>
 
                 <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
-                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                    <div style="width: 500px;">
+                        <div class="alert alert-danger h-60">
+                            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos reprehenderit
+                                obcaecati
+                                totam deserunt tempora, atque amet labore quibusdam repellendus pariatur dolore eligendi
+                                accusantium asperiores, vero molestiae corrupti mollitia impedit.</h1>
+                        </div>
+                    </div>
+
+                    <div style="width: 214.5px; height: 160px;"
+                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
                         <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Instansi</h2>
-                            <small>Jumlah data instansi yang dibawah bimbingan</small>
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+
+                            <hr style="height: 1px; background-color: black;" class="rounded">
+                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                1
+                            </p>
+                        </div>
+                    </div>
+                    <div style="width: 214.5px; height: 160px;"
+                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+
+                            <hr style="height: 1px; background-color: black;" class="rounded">
+                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                            <p class="font-extrabold text-2xl text-right pt-2">
+                                1
+                            </p>
+                        </div>
+                    </div>
+                    <div style="width: 214.5px; height: 160px;"
+                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
+                        <div class="p-3 text-gray-900">
+                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+
+                            <hr style="height: 1px; background-color: black;" class="rounded">
+                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
                             <p class="font-extrabold text-2xl text-right pt-2">
                                 1
                             </p>
                         </div>
                     </div>
 
-                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
-                        <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Siswa/i</h2>
-                            <small>Jumlah data siswa/siswi yang dibawah bimbingan</small>
-                            <p class="font-extrabold text-2xl text-right pt-2">
-                                2
-                            </p>
-                        </div>
-                    </div>
-
-                    <div style="width: 218.5px;" class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
-                        <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Data Laporan</h2>
-                            <small>Jumlah siswa/siswi yang sudah mengumpulkan laporan PKL</small>
-                            <p class="font-extrabold text-2xl text-right pt-2">
-                                3
-                            </p>
-                        </div>
-                    </div>
                 </div>
             @endhasrole
 
