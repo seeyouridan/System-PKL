@@ -17,7 +17,7 @@
 
             <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index') || request()->routeIs('instansi.create')">
-                    <i class="fa-solid fa-industry pr-2"></i>{{ __('Kelola Instansi') }}
+                    <i class="fa-solid fa-city pr-2"></i>{{ __('Kelola Instansi') }}
                 </x-nav-link>
             </div>
 
@@ -43,7 +43,7 @@
         @hasrole('guru')
             <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('instansi.index')" :active="request()->routeIs('instansi.index')">
-                    <i class="fa-solid fa-industry pr-2"></i>{{ __('Data Instansi') }}
+                    <i class="fa-solid fa-city pr-2"></i>{{ __('Data Instansi') }}
                 </x-nav-link>
             </div>
 

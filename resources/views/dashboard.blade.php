@@ -223,9 +223,51 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap gap-4 pt-10 max-w-7xl responsive-margin">
-                    <div class="border-1 pt-10 border-white rounded-lg py-4 pr-4 bg-white shadow-sm m-auto">
-                        <canvas id="myChart" style="width: 500px; height: 250px;"></canvas>
+                <div class="flex flex-wrap gap-4 pt-10 responsive-margin">
+                    @if ($mentorId == 2)
+                        <div class="maps m-auto">
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=1cZT2RN3NvsdJMBn7a1Co6tAtxWgrS40&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @elseif ($mentorId == 3)
+                        <div class="maps m-auto">
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=1AalrGPUUBgsT2H4wdGyEJDMBuXPAziI&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @elseif ($mentorId == 4)
+                        <div class="maps m-auto">
+                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
+                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @elseif ($mentorId == 5)
+                        <div class="maps m-auto">
+                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
+                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @elseif ($mentorId == 6)
+                        <div class="maps m-auto">
+                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
+                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @elseif ($mentorId == 7)
+                        <div class="maps m-auto">
+                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
+                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @endif
+
+                    <div class="border-1 border-white rounded-lg py-4 pr-4 bg-white shadow-sm m-auto">
+                        <canvas id="myChart" style="height: 250px;"></canvas>
                     </div>
                 </div>
             @endhasrole
@@ -241,11 +283,22 @@
 
                 <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
                     <div style="width: 500px;">
-                        <div class="alert alert-danger h-60">
-                            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos reprehenderit
-                                obcaecati
-                                totam deserunt tempora, atque amet labore quibusdam repellendus pariatur dolore eligendi
-                                accusantium asperiores, vero molestiae corrupti mollitia impedit.</h1>
+                        <div class="alert alert-danger h-72">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                {{ __('Presensi Siswa PKL') }}
+                            </h2>
+                            <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                            <p>
+                                Pengisian absensi dilakukan di tempat atau lokasi PKL masing-masing. <br>
+                                <i class="fa-solid fa-clock p-2"></i>08.00 - 08.30 = Hadir <br>
+                                <i class="fa-solid fa-clock p-2"></i>08.31 - 12.00 = Telat <br>
+                                <i class="fa-solid fa-clock p-2"></i>12.01 - selesai = Tidak Hadir <br>
+                            </p>
+                            <p>
+                                Untuk melakukan presensi kehadiran, silakan pergi kehalaman <a
+                                    href="{{ route('presensi.index') }}" class="text-blue-600">presensi</a> sebelum
+                                keterlambatan waktu.
+                            </p>
                         </div>
                     </div>
 
