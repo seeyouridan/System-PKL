@@ -242,27 +242,35 @@
                         </div>
                     @elseif ($mentorId == 4)
                         <div class="maps m-auto">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
-                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=19CNXAXPOKt57uqW_pnBAzD5LAxp4oh4&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     @elseif ($mentorId == 5)
                         <div class="maps m-auto">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
-                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=1zv88QD_ax0L2lVS3ZOncUypxeBm9gSY&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     @elseif ($mentorId == 6)
                         <div class="maps m-auto">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
-                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=1wAjl1_5zwKehQlwvmv_vcK4h156AAsQ&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     @elseif ($mentorId == 7)
                         <div class="maps m-auto">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=" height="300" width="640"
-                                style="border:1px solid white; border-radius: 8px;" class="shadow-sm" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/d/embed?mid=1Fqzxlf5BQMJ-b6usptTk__UyA_kqBgc&usp=sharing"
+                                height="300" width="640" style="border:1px solid white; border-radius: 8px;"
+                                class="shadow-sm" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     @endif
 
