@@ -1,7 +1,7 @@
 <x-app-layout>
     @include('laporan.create')
     @include('laporan.edit')
-    @include('laporan.addNilai')
+    @include('laporan.komponen.addNilai')
     @include('laporan.delete')
 
     <x-slot name="header">
@@ -81,6 +81,7 @@
                                 <td>Nilai</td>
                                 @if (Auth::user()->hasRole('guru'))
                                     <td>Status</td>
+                                    <td>Aksi</td>
                                 @elseif (Auth::user()->hasRole('siswa'))
                                     @if (\App\Models\Laporan::where('nilai') == !null)
                                         <td>Aksi</td>
@@ -115,18 +116,34 @@
                                         {{ $data->nilai }}
                                     @endif
                                 </td>
-                                <td>
-                                    @if (Auth::user()->hasRole('guru'))
-                                        @if ($data->nilai == 0)
+                                @if (Auth::user()->hasRole('guru'))
+                                    @if ($data->nilai == null)
+                                        <td>
                                             <div>
                                                 <span class="badge badge-danger">Belum Dinilai!</span>
                                             </div>
-                                        @else
+                                        </td>
+                                        <td>
+                                            <center>-</center>
+                                        </td>
+                                    @else
+                                        <td>
                                             <div>
                                                 <span class="badge badge-success">Sudah Dinilai!</span>
                                             </div>
-                                        @endif
-                                    @elseif (Auth::user()->hasRole('siswa'))
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <button tag="a" type="button" class="btn btn-outline-danger"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#hapusModal_{{ $data->id_laporan }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    @endif
+                                @elseif (Auth::user()->hasRole('siswa'))
+                                    <td>
                                         @if ($data->nilai == null)
                                             <div>
                                                 <button tag="a" type="button" class="btn btn-outline-warning"
@@ -137,15 +154,11 @@
                                             </div>
                                         @else
                                             <div>
-                                                <button tag="a" type="button" class="btn btn-outline-danger"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#hapusModal_{{ $data->id_laporan }}">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
+                                                <span class="badge badge-success">Sudah Dinilai!</span>
                                             </div>
                                         @endif
-                                    @endif
-                                </td>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
 
