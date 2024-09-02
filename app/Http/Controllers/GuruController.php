@@ -24,7 +24,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        $data['mentors'] = Mentor::pluck('mentor', 'id_guru')->get();
+        $data['mentors'] = Mentor::pluck('mentor', 'id_guru');
         return view('guru.create', $data);
     }
 
@@ -59,15 +59,15 @@ class GuruController extends Controller
 
         $user->assignRole('guru');
 
-        $notificaion = array(
+        $notification = array(
             'message' => "Data guru berhasil ditambahkan",
             'alert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('guru.index')->with($notificaion);
+            return redirect()->route('guru.index')->with($notification);
         } else {
-            return redirect()->route('guru.create')->with($notificaion);
+            return redirect()->route('guru.create')->with($notification);
         }
     }
 

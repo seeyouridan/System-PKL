@@ -72,15 +72,15 @@ class InstansiController extends Controller
             Kota::where('id_kota', $validate['id_kota'])->increment('jml_instansi');
         });
 
-        $notificaion = array(
+        $notification = array(
             'message' => "Data instansi berhasil ditambahkan",
             'alert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('instansi.index')->with($notificaion);
+            return redirect()->route('instansi.index')->with($notification);
         } else {
-            return redirect()->route('instansi.create')->with($notificaion);
+            return redirect()->route('instansi.create')->with($notification);
         }
     }
 
@@ -133,13 +133,13 @@ class InstansiController extends Controller
             Kota::where('id_kota', $validate['id_kota'])->increment('jml_instansi');
         }
 
-        $notificaion = array(
+        $notification = array(
             'message' => "Data instansi berhasil ditambahkan",
             'alert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('instansi.index')->with($notificaion);
+            return redirect()->route('instansi.index')->with($notification);
         }
     }
 

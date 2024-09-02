@@ -33,7 +33,7 @@ class SiswaController extends Controller
                     return view('siswa.index', ['students' => $students]);
                 } else {
                     $data['students'] = Student::get();
-                    
+
                     return view('siswa.index', $data);
                 }
             }
@@ -45,8 +45,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        $data['majors'] = Student::pluck('major', 'id_jurusan')->get();
-        $data['mentor'] = Student::pluck('mentor', 'id_guru')->get();
+        $data['majors'] = Student::pluck('major', 'id_jurusan');
+        $data['mentor'] = Student::pluck('mentor', 'id_guru');
         return view('siswa.create', $data);
     }
 
@@ -80,15 +80,15 @@ class SiswaController extends Controller
 
         $user->assignRole('siswa');
 
-        $notificaion = array(
+        $notification = array(
             'message' => "Data siswa berhasil ditambahkan",
             'alert-type' => 'success'
         );
 
         if ($request->save == true) {
-            return redirect()->route('siswa.index')->with($notificaion);
+            return redirect()->route('siswa.index')->with($notification);
         } else {
-            return redirect()->route('siswa.create')->with($notificaion);
+            return redirect()->route('siswa.create')->with($notification);
         }
     }
 
