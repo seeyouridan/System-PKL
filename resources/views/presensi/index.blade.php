@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Presensi') }}
@@ -201,59 +202,14 @@
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active pt-3" id="home-tab-pane" role="tabpanel"
-                        aria-labelledby="home-tab" tabindex="0">
-                        <table>
-                            <thead>
-                                <tr>
-                                    @php
-                                        for ($i = 1; $i < 32; $i++) {
-                                            echo "<th class='border-1 py-1 px-2 bg-red-600 text-white text-center'> $i </th>";
-                                        }
-                                    @endphp
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    @php
-                                        $cek = "<i class='fa-solid fa-check text-black'></i>";
-
-                                        for ($i = 1; $i < 32; $i++) {
-                                            echo "<td class='border-1 py-1 px-2 text-white'>$cek</td>";
-                                        }
-                                    @endphp
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <br>
-
-                        <table>
-                            <tr class="bg-blue-600 text-white text-center">
-                                <th class="border-1 py-1 px-2">H</th>
-                                <th class="border-1 py-1 px-2">S</th>
-                                <th class="border-1 py-1 px-2">I</th>
-                                <th class="border-1 py-1 px-2">A</th>
-                            </tr>
-                            <tr>
-                                <td class="py-1 px-2 border-1">31</td>
-                                <td class="py-1 px-2 border-1">0</td>
-                                <td class="py-1 px-2 border-1">0</td>
-                                <td class="py-1 px-2 border-1">0</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade p-2" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-                        tabindex="0">Tab 2</div>
-                    <div class="tab-pane fade p-2" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
-                        tabindex="0">Tab 3</div>
-                    <div class="tab-pane fade p-2" id="tester-tab-pane" role="tabpanel" aria-labelledby="tester-tab"
-                        tabindex="0">Tab 4</div>
+                    @include('presensi.bulan.agustus')
+                    @include('presensi.bulan.september')
+                    @include('presensi.bulan.oktober')
+                    @include('presensi.bulan.november')
                 </div>
             @endhasrole
 
         </div>
-    </div>
     </div>
 </x-app-layout>
 
