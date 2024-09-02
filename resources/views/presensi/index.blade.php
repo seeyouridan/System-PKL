@@ -61,6 +61,7 @@
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                                 {{ __('Presensi Siswa PKL') }}
                             </h2>
+                            <hr style="height: 1px; background-color: black;" class="rounded my-2">
                             <p>
                                 Pengisian absensi dilakukan di tempat atau lokasi PKL masing-masing. <br>
                                 <i class="fa-solid fa-clock p-2"></i>08.00 - 08.30 = Hadir <br>
@@ -70,8 +71,11 @@
                         </div>
                         <div class="alert alert-success" role="alert">
                             <div class="absensi-layer text-center">
-                                <span class="icon-check">&#10003;</span>
-                                <span>Anda sudah mengisi absen hari ini!</span>
+                                @if ($studentPresence->status == 'Tidak Hadir')
+                                    <span>Anda melewati batas absensi hari ini!</span>
+                                @else
+                                    <span>Anda sudah mengisi absen hari ini!</span>
+                                @endif
                                 <p>
                                     Status Kehadiran : <strong>{{ $studentPresence->status }}</strong>
                                 </p>

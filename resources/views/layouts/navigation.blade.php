@@ -185,6 +185,9 @@
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
                     <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Presensi') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('laporan.index')" :active="request()->routeIs('laporan.index')">
+                    <i class="fa-solid fa-book-open pr-2"></i>{{ __('Laporan') }}
+                </x-responsive-nav-link>
             @endhasrole
 
             @hasrole('guru')
@@ -196,6 +199,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
                     <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Presensi') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('laporan.index')" :active="request()->routeIs('laporan.index')">
+                    <i class="fa-solid fa-book-open pr-2"></i>{{ __('Laporan') }}
                 </x-responsive-nav-link>
             @endhasrole
         </div>

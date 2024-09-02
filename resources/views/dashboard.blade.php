@@ -283,7 +283,7 @@
 
                 <div class="flex flex-wrap pt-4 gap-4 responsive-margin">
                     <div style="width: 500px;">
-                        <div class="alert alert-danger h-72">
+                        <div class="alert alert-danger h-auto">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                                 {{ __('Presensi Siswa PKL') }}
                             </h2>
@@ -294,51 +294,46 @@
                                 <i class="fa-solid fa-clock p-2"></i>08.31 - 12.00 = Telat <br>
                                 <i class="fa-solid fa-clock p-2"></i>12.01 - selesai = Tidak Hadir <br>
                             </p>
-                            <p>
-                                Untuk melakukan presensi kehadiran, silakan pergi kehalaman <a
-                                    href="{{ route('presensi.index') }}" class="text-blue-600">presensi</a> sebelum
-                                keterlambatan waktu.
-                            </p>
+                            <hr style="height: 1px; background-color: black;" class="rounded my-2">
+
+                            @if (Auth::check())
+                                @php
+                                    $userId = Auth::id();
+                                    $student = \App\Models\Student::where('id_user', $userId)->first();
+                                    $studentPresence = \App\Models\Presence::where('id_siswa', $student->id_siswa)
+                                        ->where('tanggal', now()->format('Y-m-d'))
+                                        ->first();
+                                @endphp
+                                @if ($studentPresence == null)
+                                    <p>
+                                        Untuk melakukan presensi kehadiran, silakan pergi kehalaman <a
+                                            href="{{ route('presensi.index') }}"
+                                            class="text-blue-600"><strong>presensi</strong></a>
+                                        sebelum keterlambatan waktu.
+                                    </p>
+                                @elseif ($studentPresence == !null)
+                                    <p>
+                                        Anda sudah melakukan <a href="{{ route('presensi.index') }}"
+                                            class="text-blue-600"><strong>presensi</strong></a>, semangat menjalankan PKL,
+                                        jangan lupa untuk selalu berdo'a diawal kegiatan!
+                                    </p>
+                                @endif
+                            @endif
                         </div>
                     </div>
 
-                    <div style="width: 214.5px; height: 160px;"
-                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
-                        <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
-
-                            <hr style="height: 1px; background-color: black;" class="rounded">
-                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
-                            <p class="font-extrabold text-2xl text-right pt-2">
-                                1
-                            </p>
+                    <div class="max-h-full flex flex-wrap col-span-3 gap-4" style="max-width:692px;">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full sm:w-[214.5px] h-[160px]">
+                            <div class="p-3 text-gray-900">
+                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
+                                <p class="font-extrabold text-2xl text-right pt-2">
+                                    1
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div style="width: 214.5px; height: 160px;"
-                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
-                        <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
-
-                            <hr style="height: 1px; background-color: black;" class="rounded">
-                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
-                            <p class="font-extrabold text-2xl text-right pt-2">
-                                1
-                            </p>
-                        </div>
-                    </div>
-                    <div style="width: 214.5px; height: 160px;"
-                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-auto">
-                        <div class="p-3 text-gray-900">
-                            <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
-
-                            <hr style="height: 1px; background-color: black;" class="rounded">
-                            <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
-                            <p class="font-extrabold text-2xl text-right pt-2">
-                                1
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             @endhasrole
 
