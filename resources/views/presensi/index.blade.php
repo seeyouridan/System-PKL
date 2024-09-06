@@ -8,7 +8,7 @@
 
     <div class="py-12">
         @if (Auth::user()->hasRole('guru'))
-            <div class="max-w-full mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             @elseif (Auth::user()->hasRole('siswa'))
                 <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
         @endif
@@ -178,39 +178,57 @@
             @endhasrole
 
             @hasrole('guru')
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
-                            type="button" role="tab" aria-controls="home-tab-pane"
-                            aria-selected="true">Agustus</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                            data-bs-target="#profile-tab-pane" type="button" role="tab"
-                            aria-controls="profile-tab-pane" aria-selected="false">September</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                            data-bs-target="#contact-tab-pane" type="button" role="tab"
-                            aria-controls="contact-tab-pane" aria-selected="false">Oktober</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tester-tab" data-bs-toggle="tab" data-bs-target="#tester-tab-pane"
-                            type="button" role="tab" aria-controls="tester-tab-pane"
-                            aria-selected="false">November</button>
-                    </li>
-                </ul>
+                <div class="p-6 text-gray-900">
 
-                <div class="tab-content" id="myTabContent">
-                    @include('presensi.bulan.agustus')
-                    @include('presensi.bulan.september')
-                    @include('presensi.bulan.oktober')
-                    @include('presensi.bulan.november')
-                </div>
-            @endhasrole
+                    @php
+                        if (Auth::check()) {
+                            foreach (Auth::user()->roles as $role) {
+                                if ($role->name == 'guru') {
+                                    $userId = Auth::id();
 
+                                    $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+
+                                    if ($mentor) {
+                                        $students = \App\Models\Student::where('id_guru', $mentor->id_guru)
+                                            ->with('major')
+                                            ->get();
+                                    } else {
+                                        $students = collect();
+                                    }
+                                }
+                            }
+                        }
+                    @endphp
+
+                    <x-table :tableId="'myTable_' . uniqid()">
+                        <x-slot name="header">
+                            <tr>
+                                <th>No.</th>
+                                <th>NIS</th>
+                                <th>Siswa</th>
+                                <th>Presensi</th>
+                            </tr>
+                        </x-slot>
+
+                        @php $num = 1; @endphp
+                        @foreach ($students as $data)
+                            <tr>
+                                <td>{{ $num++ }}</td>
+                                <td>{{ $data->nis }}</td>
+                                <td>{{ $data->nama }}</td>
+                                <td>
+                                    <a class="btn btn-outline-primary p-2"
+                                        href="{{ route('presensi.komponen.rekap', $data->id_siswa) }}">
+                                        <i class="fa fa-solid fa-calendar pr-2"></i>Cek Presensi
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </x-table>
+                @endhasrole
+
+            </div>
         </div>
-    </div>
 </x-app-layout>
 
 <script>

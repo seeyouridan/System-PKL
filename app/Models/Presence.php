@@ -27,6 +27,6 @@ class Presence extends Model
 
     public function siswa(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'id_siswa');
+        return $this->belongsTo(Student::class, 'id_siswa', 'id_siswa');
     }
 }

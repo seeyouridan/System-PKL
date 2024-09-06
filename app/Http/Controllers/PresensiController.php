@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mentor;
 use App\Models\Presence;
+use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
@@ -18,9 +21,30 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        $data['presences'] = Presence::with('siswa')->get();
-        return view('presensi.index');
+        if (Auth::check()) {
+            foreach (Auth::user()->roles as $role) {
+                if ($role->name == 'guru') {
+                    $userId = Auth::id();
+
+                    $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+
+                    if ($mentor) {
+                        $students = Student::where('id_guru', $mentor->id_guru)->with('major')->get();
+                    } else {
+                        $students = collect();
+                    }
+
+                    $presences = Presence::with('siswa')->get();
+
+                    return view('presensi.index', ['students' => $students, 'presences' => $presences]);
+                } else {
+                    $presences = Presence::with('siswa')->get();
+                    return view('presensi.index', $presences);
+                }
+            }
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -113,5 +137,13 @@ class PresensiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function rekap(string $id_siswa)
+    {
+        $students = Student::where('id_siswa', $id_siswa)->first();
+        $presences = Presence::where('id_siswa', $id_siswa)->orderBy('tanggal', 'desc')->get();
+
+        return view('presensi.komponen.rekap', ['students' => $students, 'presences' => $presences]);
     }
 }
