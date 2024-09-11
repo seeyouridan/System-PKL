@@ -333,12 +333,45 @@
                     <div class="max-h-full flex flex-wrap col-span-3 gap-4" style="max-width:692px;">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full sm:w-[214.5px] h-[160px]">
                             <div class="p-3 text-gray-900">
-                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Pengajuan PKL</h2>
+                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Informasi Guru</h2>
                                 <hr style="height: 1px; background-color: black;" class="rounded my-2">
-                                <small>Data pengajuan siswa/siswi yang belum dikonfirmasi</small>
-                                <p class="font-extrabold text-2xl text-right pt-2">
-                                    1
-                                </p>
+                                <small>Data informasi guru pembimbing</small>
+
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <a href="{{ route('guru.index') }}" class="text-gray-500">Lihat Data Guru ></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full sm:w-[214.5px] h-[160px]">
+                            <div class="p-3 text-gray-900">
+                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Informasi Instansi</h2>
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <small>Data informasi terkait lokasi instansi</small>
+
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <a href="{{ route('instansi.index') }}" class="text-gray-500">Lihat Data Instansi ></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full sm:w-[214.5px] h-[160px]">
+                            <div class="p-3 text-gray-900">
+                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Pemetaan PKL</h2>
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <small>Data Informasi Pemetaan Siswa/Siswi</small>
+
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <a href="{{ route('pkl.index') }}" class="text-gray-500">Lihat Data Pemetaan ></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full sm:w-[214.5px] h-[160px]">
+                            <div class="p-3 text-gray-900">
+                                <h2 class="font-bold text-xl text-gray-800 leading-tight">Laporan PKL</h2>
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <small>Pengumpulan laporan praktek kerja lapangan</small>
+
+                                <hr style="height: 1px; background-color: black;" class="rounded my-2">
+                                <a href="{{ route('laporan.index') }}" class="text-gray-500">Kumpulkan Laporan ></a>
                             </div>
                         </div>
                     </div>
