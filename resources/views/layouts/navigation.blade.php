@@ -161,11 +161,11 @@
                 <x-responsive-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
                     <i class="fa-solid fa-users pr-2"></i>{{ __('Kelola Siswa') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('pkl.index')" :active="request()->routeIs('pkl.index')">
-                    <i class="fa-solid fa-map pr-2"></i>{{ __('PKL') }}
-                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('pengajuan.index')" :active="request()->routeIs('pengajuan.index')">
                     <i class="fa-solid fa-paper-plane pr-2"></i></i>{{ __('Pengajuan PKL') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pkl.index')" :active="request()->routeIs('pkl.index')">
+                    <i class="fa-solid fa-map pr-2"></i>{{ __('Pemetaan') }}
                 </x-responsive-nav-link>
             @endhasrole
 
@@ -180,7 +180,7 @@
                     <i class="fa-solid fa-calendar pr-2"></i>{{ __('Pengajuan PKL') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('pkl.index')" :active="request()->routeIs('pkl.index')">
-                    <i class="fa-solid fa-map pr-2"></i>{{ __('PKL') }}
+                    <i class="fa-solid fa-map pr-2"></i>{{ __('Pemetaan') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
                     <i class="fa-solid fa-calendar-days pr-2"></i>{{ __('Presensi') }}

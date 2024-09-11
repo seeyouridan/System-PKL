@@ -35,7 +35,7 @@
 
             <div class="hidden pb-6 space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('pkl.index')" :active="request()->routeIs('pkl.index')">
-                    <i class="fa-solid fa-map pr-2"></i></i>{{ __('PKL') }}
+                    <i class="fa-solid fa-map pr-2"></i></i>{{ __('Pemetaan') }}
                 </x-nav-link>
             </div>
         @endhasrole
