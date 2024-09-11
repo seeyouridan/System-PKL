@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="d-flex flex-column bg-white h-screen border-t">
+<nav x-data="{ open: false }" class="d-flex flex-column bg-white h-full min-h-screen border-t">
     <div class="pt-8 pl-3">
 
         <!-- Navigation Links -->
