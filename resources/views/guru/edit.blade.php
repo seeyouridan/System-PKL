@@ -19,8 +19,8 @@
                                 style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;"
                                 class="w-56 form-control border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm block"
                                 placeholder="Masukan username..." aria-describedby="basic-addon2"
-                                value="{{ old('username', $mentor->user->username ?? '') }}" required
-                                autocomplete="off">
+                                value="{{ old('username', str_replace('@gmail.com', '', $mentor->user->username ?? '')) }}"
+                                required autocomplete="off">
                             <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
                         </div>

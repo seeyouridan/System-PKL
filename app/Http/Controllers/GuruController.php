@@ -43,9 +43,11 @@ class GuruController extends Controller
 
         // dd($validate);
 
+        $gmail = '@gmail.com';
+
         $user = new User();
         $user->name = $validate['nama_guru'];
-        $user->username = $validate['username'];
+        $user->username = $validate['username'] . $gmail;
         $user->password = Hash::make('Password123');
         $user->save();
 
@@ -101,12 +103,14 @@ class GuruController extends Controller
         $guru = Mentor::findOrFail($id_guru);
         $user = User::find($guru->id_user);
 
+        $gmail = '@gmail.com';
+
         $user->name = $validate['nama_guru'];
-        $user->username = $validate['username'];
+        $user->username = $validate['username'] . $gmail;
         $user->save();
 
         $user->update([
-            'username' => $validate['username'],
+            'username' => $validate['username'] . $gmail,
             'name' => $validate['nama_guru'],
         ]);
 
