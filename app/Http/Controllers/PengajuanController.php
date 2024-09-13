@@ -17,7 +17,7 @@ class PengajuanController extends Controller
     public function index()
     {
         // Ambil semua pengajuan untuk ditampilkan di tabel
-        $data['submissions'] = Submission::with('student', 'city')->get();
+        $data['submissions'] = Submission::with('student', 'city')->orderBy('status', 'asc')->paginate(10);
         return view('pengajuan.index', $data);
     }
 
@@ -52,12 +52,10 @@ class PengajuanController extends Controller
             'status' => 0,
         ]);
 
-        $notification = array(
-            'message' => "Pengajuan berhasil dikirimkan!",
+        return redirect()->route('pengajuan.index')->with([
+            'message' => 'Pengajuan berhasil dikirim!',
             'alert-type' => 'success'
-        );
-
-        return redirect()->route('pengajuan.index')->with($notification);
+        ]);
     }
 
     /**
@@ -94,20 +92,16 @@ class PengajuanController extends Controller
         if ($pengajuan && $pengajuan->status == 0) {
             $pengajuan->delete();
 
-            $notification = array(
-                'message' => "Pengajuan berhasil dibatalkan",
+            return redirect()->route('pengajuan.index')->with([
+                'message' => 'Pengajuan berhasil dibatalkan',
                 'alert-type' => 'success'
-            );
-
-            return redirect()->route('pengajuan.index')->with($notification);
+            ]);
         }
 
-        $notification = array(
-            'message' => "Pengajuan tidak dapat dibatalkan",
+        return redirect()->route('pengajuan.index')->with([
+            'message' => 'Pengajuan gagal dibatalkan',
             'alert-type' => 'error'
-        );
-
-        return redirect()->route('pengajuan.index')->with($notification);
+        ]);
     }
 
     public function verify($id_pengajuan)
