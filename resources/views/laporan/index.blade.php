@@ -144,13 +144,17 @@
                                     @endif
                                 @elseif (Auth::user()->hasRole('siswa'))
                                     <td>
-                                        @if ($data->nilai == null)
+                                        @if ($data->nilai == null && $data->laporan_revisi == null)
                                             <div>
                                                 <button tag="a" type="button" class="btn btn-outline-warning"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editModal_{{ $data->id_laporan }}">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </button>
+                                            </div>
+                                        @elseif ($data->nilai == null && $data->laporan_revisi == !null)
+                                            <div>
+                                                <span class="badge badge-warning">Proses Penliaian!</span>
                                             </div>
                                         @else
                                             <div>
