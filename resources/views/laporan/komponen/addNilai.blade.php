@@ -14,8 +14,8 @@
 
                         <div class="max-w-xl">
                             <x-input-label for="nilai" value="Input Nilai" />
-                            <input type="number" id="nilai" name="nilai" value="{{ $data->nilai ?? '' }}"
-                                class="form-control h-7 w-32 rounded" require>
+                            <input type="text" id="nilai_{{ $data->id_laporan }}" name="nilai"
+                                value="{{ $data->nilai ?? '' }}" class="form-control h-7 w-32 rounded" required>
                             <x-input-error class="mt-2" :messages="$errors->get('laporan')" />
                         </div>
 
@@ -28,4 +28,21 @@
             </div>
         </div>
     </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('nilai_{{ $data->id_laporan }}').addEventListener('input', function(event) {
+            var nilaiInput = event.target.value;
+
+            if (/[^0-9]/.test(nilaiInput)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Input tidak valid',
+                    text: 'Masukkan hanya angka.',
+                });
+
+                event.target.value = '';
+            }
+        });
+    </script>
 @endforeach
