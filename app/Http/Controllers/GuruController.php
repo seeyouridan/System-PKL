@@ -34,7 +34,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'username' => 'required|max:255',
+            'username' => 'required|unique:users,username|max:255',
             'nip_guru' => 'nullable|max:30',
             'nama_guru' => 'required|max:30',
             'jenis_kelamin' => 'required|max:5',
@@ -43,11 +43,9 @@ class GuruController extends Controller
 
         // dd($validate);
 
-        $gmail = '@gmail.com';
-
         $user = new User();
         $user->name = $validate['nama_guru'];
-        $user->username = $validate['username'] . $gmail;
+        $user->username = $validate['username'];
         $user->password = Hash::make('Password123');
         $user->save();
 
@@ -103,14 +101,12 @@ class GuruController extends Controller
         $guru = Mentor::findOrFail($id_guru);
         $user = User::find($guru->id_user);
 
-        $gmail = '@gmail.com';
-
         $user->name = $validate['nama_guru'];
-        $user->username = $validate['username'] . $gmail;
+        $user->username = $validate['username'];
         $user->save();
 
         $user->update([
-            'username' => $validate['username'] . $gmail,
+            'username' => $validate['username'],
             'name' => $validate['nama_guru'],
         ]);
 
