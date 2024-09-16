@@ -23,7 +23,7 @@ class MentorSeeder extends Seeder
 
         $data = [
             [
-                'username' => 'dessi@gmail.com',
+                'username' => 'mentoribudessi',
                 'nip_guru' => '4733753654230092',
                 'nama_guru' => 'Dessi Andriani, S. T.',
                 'jenis_kelamin' => 'P',
@@ -31,7 +31,7 @@ class MentorSeeder extends Seeder
             ],
 
             [
-                'username' => 'kani@gmail.com',
+                'username' => 'mentoribukani',
                 'nip_guru' => '',
                 'nama_guru' => 'Kani Muthmainnah, S. T., M. Ars.',
                 'jenis_kelamin' => 'P',
@@ -39,7 +39,7 @@ class MentorSeeder extends Seeder
             ],
 
             [
-                'username' => 'anggi@gmail.com',
+                'username' => 'mentorpaanggi',
                 'nip_guru' => '',
                 'nama_guru' => 'Moch. Anggi Kusumah, S. Pd.',
                 'jenis_kelamin' => 'L',
@@ -47,7 +47,7 @@ class MentorSeeder extends Seeder
             ],
 
             [
-                'username' => 'luki@gmail.com',
+                'username' => 'mentorpaluki',
                 'nip_guru' => '',
                 'nama_guru' => 'R. Luki Muharam, S. ST.',
                 'jenis_kelamin' => 'L',
@@ -55,7 +55,7 @@ class MentorSeeder extends Seeder
             ],
 
             [
-                'username' => 'sri@gmail.com',
+                'username' => 'mentoribusri',
                 'nip_guru' => '',
                 'nama_guru' => 'Sri Mulyani, S. Pd.',
                 'jenis_kelamin' => 'P',
@@ -63,7 +63,7 @@ class MentorSeeder extends Seeder
             ],
 
             [
-                'username' => 'tatang@gmail.com',
+                'username' => 'mentorpatatang',
                 'nip_guru' => '',
                 'nama_guru' => 'Tatang Sudrajat, S. Pd.',
                 'jenis_kelamin' => 'L',
@@ -75,7 +75,7 @@ class MentorSeeder extends Seeder
             $user = User::create([
                 'name' => $item['nama_guru'],
                 'username' => $item['username'],
-                'password' => Hash::make('mentordpib123'),
+                'password' => Hash::make('mentordpib2024'),
             ]);
 
             DB::table('mentors')->insert([

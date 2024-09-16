@@ -23,7 +23,7 @@ class KajurSeeder extends Seeder
 
         $data = [
             [
-                'username' => 'wawan@gmail.com',
+                'username' => 'kabengpawawan',
                 'nip_guru' => '19681130 199801 1 002',
                 'nama_guru' => 'Wawan Syamsul Rizal, S.Pd',
                 'jenis_kelamin' => 'L',
