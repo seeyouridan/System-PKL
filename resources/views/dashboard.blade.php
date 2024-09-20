@@ -9,27 +9,93 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-3 text-gray-900">
-                    @if (Auth::check())
-                        @php
-                            $userId = Auth::id();
-
-                            $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
-
-                            $sapaan = '';
-                            if ($mentor) {
-                                if ($mentor->jenis_kelamin == 'L') {
-                                    $sapaan = 'Pak';
-                                } elseif ($mentor->jenis_kelamin == 'P') {
-                                    $sapaan = 'Ibu';
+                <div class="p-3 text-gray-900 flex justify-between items-center" style="width: 100%;">
+                    <div style="flex-grow: 1;" class="text-left">
+                        @if (Auth::check())
+                            @php
+                                $userId = Auth::id();
+                                $mentor = \App\Models\Mentor::where('id_user', $userId)->first();
+                                $sapaan = '';
+                                if ($mentor) {
+                                    if ($mentor->jenis_kelamin == 'L') {
+                                        $sapaan = 'Pak';
+                                    } elseif ($mentor->jenis_kelamin == 'P') {
+                                        $sapaan = 'Ibu';
+                                    }
                                 }
-                            }
-                        @endphp
 
-                        <strong>Selamat datang</strong>, {{ $sapaan }} {{ Auth::user()->name }}!
-                    @endif
+                                $hari_indonesia = [
+                                    'Sunday' => 'Minggu',
+                                    'Monday' => 'Senin',
+                                    'Tuesday' => 'Selasa',
+                                    'Wednesday' => 'Rabu',
+                                    'Thursday' => 'Kamis',
+                                    'Friday' => 'Jumat',
+                                    'Saturday' => 'Sabtu',
+                                ];
+
+                                $bulan_indonesia = [
+                                    'January' => 'Januari',
+                                    'February' => 'Februari',
+                                    'March' => 'Maret',
+                                    'April' => 'April',
+                                    'May' => 'Mei',
+                                    'June' => 'Juni',
+                                    'July' => 'Juli',
+                                    'August' => 'Agustus',
+                                    'September' => 'September',
+                                    'October' => 'Oktober',
+                                    'November' => 'November',
+                                    'December' => 'Desember',
+                                ];
+
+                                $hari = date('l');
+                                $bulan = date('F');
+                                $hari_dalam_bahasa_indonesia = $hari_indonesia[$hari];
+                                $bulan_dalam_bahasa_indonesia = $bulan_indonesia[$bulan];
+                            @endphp
+
+                            <strong>Selamat datang</strong>, {{ $sapaan }} {{ Auth::user()->name }}!
+                        @endif
+                    </div>
+                    <div style="flex-grow: 0;" class="text-right">
+                        <div>
+                            <p>
+                                <i class="fa-solid fa-calendar pr-2"></i>
+                                @php
+                                    echo $hari_dalam_bahasa_indonesia .
+                                        ', ' .
+                                        date('d') .
+                                        ' ' .
+                                        $bulan_dalam_bahasa_indonesia .
+                                        ' ' .
+                                        date('Y');
+
+                                    date_default_timezone_set('Asia/Jakarta');
+                                    $waktu_sekarang = date('H:i:s');
+                                @endphp
+                            </p>
+                        </div>
+                        <div class="text-green-500 font-bold" id="waktu">
+                            <?php echo $waktu_sekarang; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <script>
+                function updateTime() {
+                    var waktuElement = document.getElementById('waktu');
+                    var waktuSekarang = new Date();
+                    var jam = waktuSekarang.getHours().toString().padStart(2, '0');
+                    var menit = waktuSekarang.getMinutes().toString().padStart(2, '0');
+                    var detik = waktuSekarang.getSeconds().toString().padStart(2, '0');
+                    waktuElement.textContent = jam + ':' + menit + ':' + detik;
+                }
+
+                setInterval(updateTime, 1000);
+                updateTime();
+            </script>
 
             @hasrole('kajur')
                 <style>
