@@ -13,16 +13,17 @@
                         @csrf
                         @method('PATCH')
 
-                        <div class="input-group max-w-96">
-                            <label for="username" class="form-label text-sm w-full">Buat Username</label>
-                            <input id="username" type="text" name="username"
-                                style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;"
-                                class="w-56 form-control border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm block"
-                                placeholder="Masukan username..." aria-describedby="basic-addon2"
-                                value="{{ old('username', str_replace('@gmail.com', '', $mentor->user->username ?? '')) }}"
-                                required autocomplete="off">
-                            <span class="input-group-text" id="basic-addon2">@gmail.com</span>
-                            <x-input-error class="mt-2" :messages="$errors->get('username')" />
+                        <div class="sm:flex block gap-3">
+                            <div class="max-w-60">
+                                <x-input-label for="username" value="Buat Username" />
+                                <x-text-input id="username" type="text" name="username" class="mt-1 block w-full"
+                                    placeholder="Masukan username..." autocomplete="off"
+                                    value="{{ old('username', $mentor->user->username) }}" />
+                                <x-input-error class="mt-2" :messages="$errors->get('username')" />
+                            </div>
+                            <div class="pt-4 my-auto">
+                                <small>{{ $errors->first('username') }}</small>
+                            </div>
                         </div>
 
                         <div class="sm:flex block gap-3">
