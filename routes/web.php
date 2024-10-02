@@ -66,7 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi.index');
     Route::get('/presensi/create', [PresensiController::class, 'create'])->name('presensi.create');
     Route::post('/presensi', [PresensiController::class, 'store'])->name('presensi.store');
-    Route::get('/presensi/komponen/rekap/{id?}', [PresensiController::class, 'rekap'])->name('presensi.komponen.rekap');
+    Route::get('/presensi/komponen/rekap/{id}', [PresensiController::class, 'rekap'])->name('presensi.komponen.rekap');
+    Route::get('/presensi/komponen/print/{id_siswa}', [PresensiController::class, 'print'])->name('presensi.komponen.print');
 });
 
 Route::middleware('auth')->group(function () {

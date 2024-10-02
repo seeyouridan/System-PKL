@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mentor;
 use App\Models\Presence;
 use App\Models\Student;
-use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
@@ -145,5 +144,14 @@ class PresensiController extends Controller
         $presences = Presence::where('id_siswa', $id_siswa)->orderBy('tanggal', 'desc')->get();
 
         return view('presensi.komponen.rekap', ['students' => $students, 'presences' => $presences]);
+    }
+
+    public function print(String $id_siswa)
+    {
+        $students = Student::where('id_siswa', $id_siswa)->first();
+        $presences = Presence::where('id_siswa', $id_siswa)->orderBy('tanggal', 'desc')->get();
+
+        $pdf = Pdf::loadView('presensi.komponen.print', ['students' => $students, 'presences' => $presences]);
+        return $pdf->download('rekap-presensi' . $students->nama . '.pdf');
     }
 }

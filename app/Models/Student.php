@@ -42,4 +42,9 @@ class Student extends Model
     {
         return $this->hasMany(Laporan::class, 'id_siswa');
     }
+
+    public function presence(): HasMany
+    {
+        return $this->hasMany(Presence::class, 'id_siswa');
+    }
 }
