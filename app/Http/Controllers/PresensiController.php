@@ -149,9 +149,47 @@ class PresensiController extends Controller
     public function print(String $id_siswa)
     {
         $students = Student::where('id_siswa', $id_siswa)->first();
-        $presences = Presence::where('id_siswa', $id_siswa)->orderBy('tanggal', 'desc')->get();
+        // $presences = Presence::where('id_siswa', $id_siswa)->orderBy('tanggal', 'desc')->get();
 
-        $pdf = Pdf::loadView('presensi.komponen.print', ['students' => $students, 'presences' => $presences]);
-        return $pdf->download('rekap-presensi' . $students->nama . '.pdf');
+        $presences_agustus = Presence::with('siswa') // Eager load relasi siswa
+            ->where('id_siswa', $id_siswa)
+            ->whereMonth('tanggal', '=', 8)
+            ->orderBy('tanggal', 'asc')
+            ->limit(50)
+            ->get();
+
+        $presences_september = Presence::with('siswa')
+            ->where('id_siswa', $id_siswa)
+            ->whereMonth('tanggal', '=', 9) // Bulan September
+            ->orderBy('tanggal', 'asc')
+            ->limit(50)
+            ->get();
+
+        $presences_oktober = Presence::with('siswa')
+            ->where('id_siswa', $id_siswa)
+            ->whereMonth('tanggal', '=', 10) // Bulan Oktober
+            ->orderBy('tanggal', 'asc')
+            ->limit(50)
+            ->get();
+
+        $presences_november = Presence::with('siswa')
+            ->where('id_siswa', $id_siswa)
+            ->whereMonth('tanggal', '=', 11) // Bulan November
+            ->orderBy('tanggal', 'asc')
+            ->limit(50)
+            ->get();
+
+        // $pdf = Pdf::loadView('presensi.komponen.print', ['students' => $students, 'presences' => $presences]);
+        // return $pdf->download('rekap-presensi ' . $students->nama . ' .pdf');
+
+        $pdf = Pdf::loadView('presensi.komponen.print', [
+            'students' => $students,
+            'presences_agustus' => $presences_agustus,
+            'presences_september' => $presences_september,
+            'presences_oktober' => $presences_oktober,
+            'presences_november' => $presences_november
+        ]);
+
+        return $pdf->download('rekap-presensi ' . $students->nama . ' .pdf');
     }
 }
