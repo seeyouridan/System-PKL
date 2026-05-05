@@ -1,66 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📘 Sistem Informasi Praktek Kerja Lapangan (PKL)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Informasi Praktek Kerja Lapangan (PKL) adalah aplikasi berbasis web yang dikembangkan menggunakan framework Laravel untuk mendukung proses pengelolaan kegiatan PKL di lingkungan sekolah secara terstruktur, efektif, dan terintegrasi.
 
-## About Laravel
+Project ini dibuat sebagai bagian dari **Kerja Praktek (KP)** pada program studi Teknik Informatika.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Deskripsi Sistem
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sistem ini dirancang untuk menggantikan proses manual dalam pengelolaan PKL seperti:
+- Pengajuan tempat PKL
+- Monitoring kegiatan siswa
+- Absensi harian
+- Penilaian laporan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Dengan sistem ini, seluruh proses dilakukan secara digital dan dapat diakses oleh beberapa aktor dengan hak akses masing-masing.
 
-## Learning Laravel
+### 👥 Aktor Sistem
+- Ketua Jurusan
+- Guru Pembimbing
+- Siswa
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧑‍💻 Teknologi yang Digunakan
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Backend
+- Laravel (PHP Framework)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+- HTML, CSS, JavaScript
+- Bootstrap
+- Tailwind CSS
 
-## Laravel Sponsors
+### Library & Plugin
+- Font Awesome
+- DataTables
+- Chart.js
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Database
+- MySQL
 
-### Premium Partners
+## ✨ Fitur Utama
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 🔐 Multi User System
 
-## Contributing
+Sistem memiliki 3 role utama:
+- Ketua Jurusan
+- Guru Pembimbing
+- Siswa
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Spatie Laravel Permission
 
-## Code of Conduct
+Digunakan untuk mengatur role dan permission (Ketua Jurusan, Guru, Siswa).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Install :
+```
+composer require spatie/laravel-permission
+```
+Publish config :
+```
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+```
+Migrasi :
+```
+php artisan migrate
+```
 
-## Security Vulnerabilities
+### 🗂️ Fitur Ketua Jurusan
+- Mengelola data guru pembimbing
+- Mengelola data siswa
+- Mengelola data instansi PKL
+- Menentukan guru pembimbing pada instansi
+- Melakukan pemetaan siswa ke instansi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 👨‍🏫 Fitur Guru Pembimbing
+- Melihat siswa bimbingan
+- Monitoring jurnal kegiatan siswa
+- Melihat lokasi absensi siswa (map)
+- Rekap absensi siswa
+- Cetak laporan absensi
+- Memberikan penilaian laporan
+- Memberikan revisi laporan jika diperlukan
 
-## License
+### 🎓 Fitur Siswa
+- Mengajukan PKL
+- Melakukan absensi berbasis geolokasi
+- Mengisi jurnal kegiatan
+- Mengumpulkan laporan PKL
+- Melihat status penilaian dan revisi
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📍 Sistem Absensi Geolokasi
+
+### Absensi dilakukan menggunakan:
+
+- Latitude
+- Longitude
+
+### Ketentuan Status Kehadiran:
+- Hadir → Jika absen tepat waktu
+- Telat → Jika melewati jam masuk
+- Tidak Hadir → Jika melewati batas toleransi
+
+## DomPDF (Generate PDF)
+
+Digunakan untuk fitur cetak laporan absensi.
+
+Install :
+```
+composer require barryvdh/laravel-dompdf
+```
+Publish config :
+```
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+```
+
+## 🧭 Alur Sistem (Singkat)
+1. Ketua jurusan mengelola data master (siswa, guru, instansi)
+2. Siswa mengajukan PKL
+3. Ketua jurusan menentukan instansi & pembimbing
+4. Siswa melakukan absensi & mengisi jurnal
+5. Guru memonitor aktivitas siswa
+6. Siswa mengumpulkan laporan
+7. Guru memberikan penilaian & revisi
+
+## 📌 Catatan
+- Pastikan GPS aktif saat melakukan absensi
+- Waktu absensi mengikuti pengaturan sistem
+- Relasi siswa dan guru berdasarkan instansi
+
+## 👨‍💻 Developer
+
+Dikembangkan oleh: <br/>
+**Rafly Idan** <br/>
+**Mahasiswa Teknik Informatika** <br/>
+**Universitas Suryakancana** <br/>
+
+## 📄 Lisensi
+
+Project ini dibuat untuk keperluan akademik (Kerja Praktek) dan pengembangan sistem informasi di lingkungan sekolah.
