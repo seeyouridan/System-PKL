@@ -17,7 +17,7 @@ class PengajuanController extends Controller
     public function index()
     {
         // Ambil semua pengajuan untuk ditampilkan di tabel
-        $data['submissions'] = Submission::with('student', 'city')->orderBy('status', 'asc')->paginate(10);
+        $data['submissions'] = Submission::with('student', 'city')->orderBy('status', 'asc')->get();
         return view('pengajuan.index', $data);
     }
 
